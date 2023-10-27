@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:src/home_page/widgets/app_bar_widget.dart';
+import 'package:src/home_page/widgets/filter_widget.dart';
 import 'package:src/home_page/widgets/search_field_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,7 +17,14 @@ class HomePage extends StatelessWidget {
               children: [
                 CustomAppBarWidget(),
                 SizedBox(height: 30,),
-                CustomSearchFieldWidget()
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomSearchFieldWidget(),
+                    CustomFilterWidget()
+                  ],
+                )
               ],
             ),
           ),

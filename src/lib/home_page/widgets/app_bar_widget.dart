@@ -15,7 +15,7 @@ class CustomAppBarWidget extends StatelessWidget {
             Image.asset(
               "assets/icons/menu.png",
               color: Color(0xFF222525),
-              width: 30,
+              width: 35,
             ),
             const SizedBox(width: 15,),
             Column(
@@ -26,7 +26,7 @@ class CustomAppBarWidget extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     color: Color(0xFF222525),
                     fontWeight: FontWeight.bold,
-                    fontSize: 12,
+                    fontSize: 15,
                   ),
                 ),
                 Text(
@@ -34,7 +34,7 @@ class CustomAppBarWidget extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     color: Color(0xFF222525),
                     fontWeight: FontWeight.normal,
-                    fontSize: 12,
+                    fontSize: 15,
                   ),
                 ),
               ],
@@ -43,7 +43,7 @@ class CustomAppBarWidget extends StatelessWidget {
         ),
         Image.asset(
           "assets/icons/account.png",
-          width: 30,
+          width: 35,
           color: Color(0xFF222525),
         ),
       ],

@@ -8,6 +8,7 @@ class CustomSearchFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 45,
+      width: 265,
       child: TextField(
         cursorColor: Color(0xFF222525),
         decoration: InputDecoration(
@@ -15,7 +16,6 @@ class CustomSearchFieldWidget extends StatelessWidget {
           fillColor: Colors.white,
           filled: true,
           prefixIcon: Container(
-            width: 50,
             padding: EdgeInsets.all(10),
             child: Image.asset(
               "assets/icons/search.png",
