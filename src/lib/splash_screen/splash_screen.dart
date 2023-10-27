@@ -33,14 +33,14 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Image(
-              image: AssetImage("assets/images/text_logo.png"),
+              image: AssetImage("assets/images/splash_screen/text_logo.png"),
               fit: BoxFit.cover,
               isAntiAlias: true,
               width: 267,
               height: 115,
             ),
             const Image(
-              image: AssetImage("assets/images/logo.png"),
+              image: AssetImage("assets/images/splash_screen/logo.png"),
               fit: BoxFit.cover,
               isAntiAlias: true,
               width: 375,
