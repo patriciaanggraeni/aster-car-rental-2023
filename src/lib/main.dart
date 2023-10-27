@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aster Retsa Car Rental',
-      home: const HomePage(),
+      home: HomePage(),
       // routes: {
       //   homePageRoute: (context) => HomePage(),
       // },
