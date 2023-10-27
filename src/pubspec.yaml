@@ -62,6 +62,11 @@ flutter:
     - assets/images/cars/aston_martin_v12.png
     - assets/images/cars/lamborgini_centenario.png
 
+    - assets/images/brands/porsche_brand.png
+    - assets/images/brands/mercedes_brand.png
+    - assets/images/brands/nissan_brand.png
+    - assets/images/brands/jeep_brand.png
+
     - assets/icons/menu.png
     - assets/icons/filter.png
     - assets/icons/search.png
