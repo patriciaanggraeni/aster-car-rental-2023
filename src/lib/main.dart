@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:src/splash_screen/splash_screen.dart';
-import 'home_page.dart';
+import 'home_page/home_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aster Retsa Car Rental',
-      home: const SplashScreen(),
-      routes: {
-        homePageRoute: (context) => HomePage(),
-      },
+      home: const HomePage(),
+      // routes: {
+      //   homePageRoute: (context) => HomePage(),
+      // },
     );
   }
 }

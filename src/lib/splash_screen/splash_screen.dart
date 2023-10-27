@@ -47,42 +47,44 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 375,
             ),
              RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 children: [
                   TextSpan(
                     text: 'Dream ',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold, // Mengatur tebal untuk "Dream"
-                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
                   ),
                   TextSpan(
                     text: 'Cars, ',
-                    style: TextStyle(
+                    style:GoogleFonts.poppins(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
                     ),
                   ),
                   TextSpan(
                     text: 'Real ',
-                    style: TextStyle(
+                    style:  GoogleFonts.poppins(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold, // Mengatur tebal untuk "Real"
-                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
                   ),
                   TextSpan(
                     text: 'Journeys',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
                     ),
                   ),
                 ],
               ),
             ),
-            _isLoading && _firstTime ? CircularProgressIndicator(
+            _isLoading ? CircularProgressIndicator(
               color: Colors.white,
             ) : ElevatedButton(
               style: ElevatedButton.styleFrom(
