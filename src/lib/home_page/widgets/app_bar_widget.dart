@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:src/home_page/widgets/greeting_widget.dart';
 
 class CustomAppBarWidget extends StatelessWidget {
   const CustomAppBarWidget({super.key});
@@ -18,27 +18,7 @@ class CustomAppBarWidget extends StatelessWidget {
               width: 35,
             ),
             const SizedBox(width: 15,),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Hello, User!",
-                  style: GoogleFonts.poppins(
-                    color: Color(0xFF222525),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-                Text(
-                  "Welcome to Aster Retsa",
-                  style: GoogleFonts.poppins(
-                    color: Color(0xFF222525),
-                    fontWeight: FontWeight.normal,
-                    fontSize: 15,
-                  ),
-                ),
-              ],
-            )
+            CustomGreetingWidget(),
           ],
         ),
         Image.asset(
