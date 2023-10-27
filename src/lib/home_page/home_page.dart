@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:src/home_page/model/BrandSeeder.dart';
 import 'package:src/home_page/model/CarSeeder.dart';
 import 'package:src/home_page/widgets/app_bar_widget.dart';
+import 'package:src/home_page/widgets/available_cars_widget/avaible_cars_widget.dart';
 import 'package:src/home_page/widgets/brand_widget.dart';
 import 'package:src/home_page/widgets/filter_widget.dart';
 import 'package:src/home_page/widgets/offer_widget.dart';
@@ -25,18 +25,26 @@ class HomePage extends StatelessWidget {
               children: [
                 CustomAppBarWidget(),
                 SizedBox(height: 30,),
-                const Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomSearchFieldWidget(),
-                    CustomFilterWidget()
-                  ],
+                Expanded(
+                  child: ListView(
+                    children: [
+                      const Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomSearchFieldWidget(),
+                          CustomFilterWidget()
+                        ],
+                      ),
+                      SizedBox(height: 15,),
+                      CustomOfferWidget(cars: cars),
+                      SizedBox(height: 15,),
+                      CustomBrandWidget(brands: brands),
+                      SizedBox(height: 15,),
+                      // CustomAvailableCarsWidget(availableCars: cars),
+                    ],
+                  ),
                 ),
-                SizedBox(height: 15,),
-                CustomOfferWidget(cars: cars),
-                SizedBox(height: 15,),
-                CustomBrandWidget(brands: brands),
               ],
             ),
           ),
