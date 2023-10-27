@@ -16,10 +16,10 @@ class CustomOfferWidget extends StatelessWidget {
         children: [
           Text(
             "Best Offer",
-            style:  GoogleFonts.poppins(
+            style: GoogleFonts.poppins(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 25,
+              fontSize: 20,
             ),
           ),
           Card(
