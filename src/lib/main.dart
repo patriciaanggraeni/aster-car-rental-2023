@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:src/splash_screen/splash_screen.dart';
-// import 'home_page/home_page.dart';
+import 'package:src/home_page/widgets/app_bar_widget.dart';
+import 'package:src/home_page/widgets/bottom_navigation_widget.dart';
+import 'package:src/splash_screen/splash_screen.dart';
+import 'home_page/home_page.dart';
 import 'package:src/pages/detail_page.dart';
 import 'models/car.dart';
 
@@ -12,6 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Car innovaZenix = Car(
       name: "Innova Zenix 2023",
       rentalPricePerDay: 400,
@@ -32,21 +35,20 @@ class MyApp extends StatelessWidget {
       ],
     );
 
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Aster Retsa Car Rental',
       home: HomePage(),
-      // routes: {
       //   homePageRoute: (context) => HomePage(),
       // },
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        colorScheme: const ColorScheme.light(
-          primary: Colors.black,
-          background: Colors.white,
-        ),
-        useMaterial3: true,
-      ),
-      home: DetailPage(car: innovaZenix),
+      // theme: ThemeData(
+      //   fontFamily: 'Poppins',
+      //   colorScheme: const ColorScheme.light(
+      //     primary: Colors.black,
+      //     background: Colors.white,
+      //   ),
+      //   useMaterial3: true,
+      // ),
+      // home: DetailPage(car: innovaZenix),
     );
   }
 }

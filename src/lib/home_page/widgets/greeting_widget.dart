@@ -7,7 +7,8 @@ class CustomGreetingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start, children: [
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
         Text(
           "Hello, User!",
           style: GoogleFonts.poppins(

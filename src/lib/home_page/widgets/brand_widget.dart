@@ -8,14 +8,14 @@ class CustomBrandWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            child: Row(
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -37,40 +37,39 @@ class CustomBrandWidget extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-          SizedBox(
-            height: 80,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: brands.length,
-              itemBuilder: (context, index) {
-                Brand brand = brands[index];
-                return Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      shape: const RoundedRectangleBorder(
-                        side: BorderSide(color: Color(0xFF222525)),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
+            SizedBox(
+              height: 80,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: brands.length,
+                itemBuilder: (context, index) {
+                  Brand brand = brands[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: Card(
+                        shape: const RoundedRectangleBorder(
+                          side: BorderSide(color: Color(0xFF222525)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Image.asset(
-                          brand.image,
-                          width: 40,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Image.asset(
+                            brand.image,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ]
+        ),
       ),
     );
   }
