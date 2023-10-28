@@ -46,20 +46,23 @@ class CustomBrandWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 Brand brand = brands[index];
                 return Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Container(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SizedBox(
                     width: 80,
                     height: 80,
                     child: Card(
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         side: BorderSide(color: Color(0xFF222525)),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
                       ),
-                      child: Image.asset(
-                        brand.image,
-                        width: 40,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Image.asset(
+                          brand.image,
+                          width: 40,
+                        ),
                       ),
                     ),
                   ),

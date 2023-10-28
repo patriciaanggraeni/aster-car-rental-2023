@@ -11,7 +11,7 @@ class CustomGreetingWidget extends StatelessWidget {
         Text(
           "Hello, User!",
           style: GoogleFonts.poppins(
-            color: Color(0xFF222525),
+            color: const Color(0xFF222525),
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
@@ -19,7 +19,7 @@ class CustomGreetingWidget extends StatelessWidget {
         Text(
           "Welcome to Aster Retsa",
           style: GoogleFonts.poppins(
-            color: Color(0xFF222525),
+            color: const Color(0xFF222525),
             fontWeight: FontWeight.normal,
             fontSize: 15,
           ),

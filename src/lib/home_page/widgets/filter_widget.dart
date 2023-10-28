@@ -9,7 +9,7 @@ class CustomFilterWidget extends StatelessWidget {
       height: 45,
       width: 45,
       decoration: BoxDecoration(
-        color: Color(0xFF222525),
+        color: const Color(0xFF222525),
         borderRadius: BorderRadius.circular(10),
       ),
       alignment: Alignment.center,

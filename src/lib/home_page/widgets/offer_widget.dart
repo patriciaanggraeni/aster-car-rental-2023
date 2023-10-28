@@ -23,14 +23,14 @@ class CustomOfferWidget extends StatelessWidget {
             ),
           ),
           Card(
-            color: Color(0xFF222525),
-            shape: RoundedRectangleBorder(
+            color: const Color(0xFF222525),
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

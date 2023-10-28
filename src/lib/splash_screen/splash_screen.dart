@@ -84,13 +84,13 @@ class _SplashScreenState extends State<SplashScreen> {
                 ],
               ),
             ),
-            _isLoading ? CircularProgressIndicator(
+            _isLoading ? const CircularProgressIndicator(
               color: Colors.white,
             ) : ElevatedButton(
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(345, 50),
-                backgroundColor: Color(0xFFFFFFFF),
-                shape: RoundedRectangleBorder(
+                minimumSize: const Size(345, 50),
+                backgroundColor: const Color(0xFFFFFFFF),
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(20),
                   ),
