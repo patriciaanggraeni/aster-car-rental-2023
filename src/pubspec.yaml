@@ -71,6 +71,9 @@ flutter:
     - assets/icons/filter.png
     - assets/icons/search.png
     - assets/icons/account.png
+    - assets/icons/car_seat.png
+    - assets/icons/speedometer.png
+    - assets/icons/gas_station.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

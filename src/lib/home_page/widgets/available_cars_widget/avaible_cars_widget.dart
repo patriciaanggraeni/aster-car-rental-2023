@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:src/home_page/widgets/available_cars_widget/detail_car_widget.dart';
-import 'package:src/home_page/widgets/available_cars_widget/name_and_rating_widget.dart';
+import 'package:src/home_page/widgets/available_cars_widget/name_widget.dart';
+import 'package:src/home_page/widgets/available_cars_widget/price_widget.dart';
+import 'package:src/home_page/widgets/available_cars_widget/rating_widget.dart';
 import '../../model/Car.dart';
 
 class CustomAvailableCarsWidget extends StatelessWidget {
@@ -28,26 +30,26 @@ class CustomAvailableCarsWidget extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Stack(
                 children: [
-                  Text(
-                      "\$${availableCar.price.toInt().toString()}",
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
                   SizedBox(
                     width: 290,
                     height: 200,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image(image: AssetImage(availableCar.image)),
-                        Column(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CustomNameRatingWidget(availableCar: availableCar),
-                            const SizedBox(height: 10,),
+                            CustomNameWidget(availableCar: availableCar),
+                            CustomRatingWidget(availableCar: availableCar),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                             CustomDetailCarWidget(availableCar: availableCar),
+                            CustomPriceWidget(availableCar: availableCar),
                           ],
                         )
                       ],
