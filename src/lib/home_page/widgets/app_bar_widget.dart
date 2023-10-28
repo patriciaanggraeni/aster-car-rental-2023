@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:src/home_page/widgets/greeting_widget.dart';
 
-class CustomAppBarWidget extends StatelessWidget {
+class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBarWidget({super.key});
 
   @override
@@ -14,19 +14,22 @@ class CustomAppBarWidget extends StatelessWidget {
           children: [
             Image.asset(
               "assets/icons/menu.png",
-              color: Color(0xFF222525),
+              color: const Color(0xFF222525),
               width: 35,
             ),
             const SizedBox(width: 15,),
-            CustomGreetingWidget(),
+            const CustomGreetingWidget(),
           ],
         ),
         Image.asset(
           "assets/icons/account.png",
           width: 35,
-          color: Color(0xFF222525),
+          color: const Color(0xFF222525),
         ),
       ],
     );
   }
+
+  @override
+  Size get preferredSize =>  const Size.fromHeight(kToolbarHeight);
 }
