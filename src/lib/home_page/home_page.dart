@@ -18,35 +18,33 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea (
-        child: Container(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                CustomAppBarWidget(),
-                SizedBox(height: 30,),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      const Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomSearchFieldWidget(),
-                          CustomFilterWidget()
-                        ],
-                      ),
-                      SizedBox(height: 15,),
-                      CustomOfferWidget(cars: cars),
-                      SizedBox(height: 15,),
-                      CustomBrandWidget(brands: brands),
-                      SizedBox(height: 15,),
-                      // CustomAvailableCarsWidget(availableCars: cars),
-                    ],
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              const CustomAppBarWidget(),
+              const SizedBox(height: 30,),
+              Expanded(
+                child: ListView(
+                  children: [
+                    const Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomSearchFieldWidget(),
+                        CustomFilterWidget()
+                      ],
+                    ),
+                    const SizedBox(height: 15,),
+                    CustomOfferWidget(cars: cars),
+                    const SizedBox(height: 15,),
+                    CustomBrandWidget(brands: brands),
+                    const SizedBox(height: 15,),
+                    CustomAvailableCarsWidget(availableCars: cars),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

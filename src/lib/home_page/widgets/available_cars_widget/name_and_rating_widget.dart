@@ -16,7 +16,7 @@ class CustomNameRatingWidget extends StatelessWidget {
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.normal,
-            fontSize: 12,
+            fontSize: 15,
           ),
         ),
         Row(
@@ -26,13 +26,13 @@ class CustomNameRatingWidget extends StatelessWidget {
               style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontWeight: FontWeight.normal,
-                fontSize: 12,
+                fontSize: 15,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.star,
               color: Colors.white,
-              size: 14,
+              size: 15,
             ),
           ],
         ),

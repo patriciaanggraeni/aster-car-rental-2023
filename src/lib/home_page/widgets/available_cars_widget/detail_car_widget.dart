@@ -13,7 +13,7 @@ class CustomDetailCarWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.speed,
               color: Colors.white,
               size: 15,
@@ -23,14 +23,14 @@ class CustomDetailCarWidget extends StatelessWidget {
                style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontWeight: FontWeight.normal,
-                fontSize: 20,
+                fontSize: 12,
               ),
             ),
           ],
         ),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.gas_meter,
               color: Colors.white,
               size: 15,
@@ -40,24 +40,24 @@ class CustomDetailCarWidget extends StatelessWidget {
                style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontWeight: FontWeight.normal,
-                fontSize: 20,
+                fontSize: 12,
               ),
             ),
           ],
         ),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.event_seat,
               color: Colors.white,
               size: 15,
             ),
             Text(
-              "${availableCar.seat.toString()}",
+              availableCar.seat.toString(),
                style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontWeight: FontWeight.normal,
-                fontSize: 20,
+                fontSize: 12,
               ),
             ),
           ],

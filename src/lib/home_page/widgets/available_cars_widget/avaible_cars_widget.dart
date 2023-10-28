@@ -11,31 +11,49 @@ class CustomAvailableCarsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: availableCars.length,
         itemBuilder: (context, index) {
-          Car availableCar = this.availableCars[index];
+          Car availableCar = availableCars[index];
           return Card(
-            color: Color(0xFF222525),
-            shape: RoundedRectangleBorder(
+            color: const Color(0xFF222525),
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Container(
-                width: 290,
-                height: 200,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image(image: AssetImage(availableCar.image)),
-                    CustomNameRatingWidget(availableCar: availableCar),
-                    CustomDetailCarWidget(availableCar: availableCar),
-                  ],
-                ),
+              padding: const EdgeInsets.all(10),
+              child: Stack(
+                children: [
+                  Text(
+                      "\$${availableCar.price.toInt().toString()}",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  SizedBox(
+                    width: 290,
+                    height: 200,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image(image: AssetImage(availableCar.image)),
+                        Column(
+                          children: [
+                            CustomNameRatingWidget(availableCar: availableCar),
+                            const SizedBox(height: 10,),
+                            CustomDetailCarWidget(availableCar: availableCar),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           );

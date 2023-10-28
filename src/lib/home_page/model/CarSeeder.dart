@@ -5,7 +5,7 @@ class CarSeeder {
 
   List<Car> getListCar() => [
     Car(
-        name: "Lamborgini Centenarion",
+        name: "Lamborgini Centenario",
         rating: 4.5,
         image: "assets/images/cars/lamborgini_centenario.png",
         price: 1200,
