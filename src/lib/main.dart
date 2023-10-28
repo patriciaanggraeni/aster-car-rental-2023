@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:src/pages/detail_page.dart';
-
 import 'models/car.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static const String homePageRoute = '/home_page';
 
   @override
   Widget build(BuildContext context) {
