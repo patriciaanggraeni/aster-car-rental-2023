@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:src/pages/confirm_page.dart';
-
 import '../models/car.dart';
-
 import '../widgets/button_bottom_widget.dart';
 import '../widgets/date_picker_widget.dart';
 import '../widgets/detail_car_widget.dart';

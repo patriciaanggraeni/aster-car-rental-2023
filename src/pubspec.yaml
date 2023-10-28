@@ -58,6 +58,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
+    - assets/images/
+    - assets/icons/
     - assets/images/logo.png
     - assets/images/text_logo.png
     - assets/images/splash_screen.png
@@ -97,9 +99,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-  assets:
-    - assets/images/
-    - assets/icons/
 
   fonts:
     - family: Poppins

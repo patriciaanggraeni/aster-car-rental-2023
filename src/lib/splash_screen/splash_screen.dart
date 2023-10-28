@@ -82,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ],
               ),
             ),
-            _isLoading && _firstTime ? CircularProgressIndicator(
+            _isLoading ? CircularProgressIndicator(
               color: Colors.white,
             ) : ElevatedButton(
               style: ElevatedButton.styleFrom(
