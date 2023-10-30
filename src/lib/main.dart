@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:src/about/about.dart';
 import 'package:src/home_page/widgets/app_bar_widget.dart';
 import 'package:src/home_page/widgets/bottom_navigation_widget.dart';
 import 'package:src/splash_screen/splash_screen.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
 
     return const MaterialApp(
       title: 'Aster Retsa Car Rental',
-      home: HomePage(),
+      home: About(),
       //   homePageRoute: (context) => HomePage(),
       // },
       // theme: ThemeData(
