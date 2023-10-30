@@ -1,6 +1,8 @@
 import 'car.dart';
 
-Car innovaZenix = Car(
+class CarSeeder {
+
+  Car innovaZenix = Car(
       name: "Innova Zenix 2023",
       price: 400,
       type: "V Hybrid",
@@ -14,13 +16,11 @@ Car innovaZenix = Car(
       seatCount: 7,
       rating: 4,
       photos: [
-        "zenix_front.png",
-        "zenix_back.png",
-        "zenix_side.png",
+        "cars/innova_zenix/zenix_front.png",
+        "cars/innova_zenix/zenix_back.png",
+        "cars/innova_zenix/zenix_side.png",
       ],
     );
-
-class CarSeeder {
 
   List<Car> getListCar() => [
      Car(

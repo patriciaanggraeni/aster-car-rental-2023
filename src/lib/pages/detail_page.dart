@@ -93,7 +93,7 @@ class _DetailPageState extends State<DetailPage> {
         children: [
           Container(
             height: 262,
-            color: Colors.black,
+            color: const Color(0XFF222525),
             child: ImageSliderWidget(images: widget.car.photos),
           ),
           const SizedBox(height: 8),

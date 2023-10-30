@@ -16,7 +16,7 @@ class DetailCarWidget extends StatelessWidget {
           children: [
             SectionTitleWidget(title: car.name, fontSize: 22),
             SectionTitleWidget(
-                title: '${car.price.toString()}k/day'),
+                title: '\$${car.price.toString()}/day'),
           ],
         ),
         Row(

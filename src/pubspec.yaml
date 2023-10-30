@@ -69,9 +69,9 @@ flutter:
     - assets/images/cars/aston_martin_v12/
     - assets/images/cars/lamborgini_centenario/
 
-#    - assets/images/splash_screen/logo.png
-#    - assets/images/splash_screen/text_logo.png
-#    - assets/images/splash_screen/splash_screen.png
+    - assets/images/splash_screen/logo.png
+    - assets/images/splash_screen/text_logo.png
+    - assets/images/splash_screen/splash_screen.png
 
     - assets/icons/menu.png
     - assets/icons/filter.png

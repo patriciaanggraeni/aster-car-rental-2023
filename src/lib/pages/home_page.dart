@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:src/models/brand_seeder.dart';
 import 'package:src/models/car_seeder.dart';
+import 'package:src/pages/about.dart';
+import 'package:src/pages/detail_page.dart';
+import 'package:src/pages/login_page.dart';
+import 'package:src/pages/register_page.dart';
 import 'package:src/widgets/home_page_widget/app_bar_widget.dart';
 import '../models/car.dart';
 import '../widgets/home_page_widget/available_cars_widget/avaible_cars_widget.dart';
@@ -60,8 +64,10 @@ class _HomePageState extends State<HomePage> {
               );
             },
           ),
-          Page3(),
-          Page4(),
+          DetailPage(car: CarSeeder().innovaZenix),
+          const LoginPage(),
+          const RegisterPage(),
+          About(),
         ],
       ),
       bottomNavigationBar: CustomBottomNavigationWidget(currentPage: _currentPage, pageController: _pageController),

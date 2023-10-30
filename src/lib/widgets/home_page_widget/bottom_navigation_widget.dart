@@ -22,30 +22,36 @@ class _CustomBottomNavigationWidgetState extends State<CustomBottomNavigationWid
         widget.pageController.jumpToPage(index);
         widget.currentPage = index;
       },
-      items: [
+      items: const [
         BottomBarItem(
           icon: Icon(Icons.home),
           title: Text('Home'),
-          activeColor: Colors.blue,
-          activeTitleColor: Colors.blue.shade600,
-        ),
-        const BottomBarItem(
-          icon: Icon(Icons.favorite),
-          title: Text('Favorites'),
-          activeColor: Colors.red,
+          activeColor: Color(0xFF222525),
+          activeTitleColor: Colors.white,
         ),
         BottomBarItem(
-          icon: Icon(Icons.person),
-          title: Text('Account'),
-          backgroundColorOpacity: 0.1,
-          activeColor: Colors.greenAccent.shade700,
+          icon: Icon(Icons.more),
+          title: Text('Details'),
+          activeColor: Color(0xFF222525),
+          activeTitleColor: Colors.white,
         ),
         BottomBarItem(
-          icon: Icon(Icons.settings),
-          title: Text('Settings'),
-          activeColor: Colors.orange,
-          activeIconColor: Colors.orange.shade600,
-          activeTitleColor: Colors.orange.shade700,
+          icon: Icon(Icons.login),
+          title: Text('login'),
+          activeColor: Color(0xFF222525),
+          activeTitleColor: Colors.white,
+        ),
+         BottomBarItem(
+          icon: Icon(Icons.app_registration),
+          title: Text('register'),
+          activeColor: Color(0xFF222525),
+          activeTitleColor: Colors.white,
+        ),
+        BottomBarItem(
+          icon: Icon(Icons.details),
+          title: Text('About'),
+          activeColor: Color(0xFF222525),
+          activeTitleColor: Colors.white,
         ),
       ],
     );
