@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../models/car.dart';
-import '../widgets/button_bottom_widget.dart';
-import '../widgets/mini_detail_car_widget.dart';
+import '../widgets/detail_page_widget/button_bottom_widget.dart';
+import '../widgets/detail_page_widget/mini_detail_car_widget.dart';
 
 class ConfirmPage extends StatelessWidget {
   const ConfirmPage({
