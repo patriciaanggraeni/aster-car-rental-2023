@@ -13,20 +13,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Aster Retsa Car Rental',
-      home: HomePage(),
-      //   homePageRoute: (context) => HomePage(),
-      // },
-      // theme: ThemeData(
-      //   fontFamily: 'Poppins',
-      //   colorScheme: const ColorScheme.light(
-      //     primary: Colors.black,
-      //     background: Colors.white,
-      //   ),
-      //   useMaterial3: true,
-      // ),
-      // home: DetailPage(car: innovaZenix),
+      home: const HomePage(),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        colorScheme: const ColorScheme.light(
+          primary: Colors.black,
+          background: Colors.white,
+        ),
+        // useMaterial3: true,
+      ),
     );
   }
 }

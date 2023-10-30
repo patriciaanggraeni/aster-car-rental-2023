@@ -15,8 +15,7 @@ class DetailCarWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SectionTitleWidget(title: car.name, fontSize: 22),
-            SectionTitleWidget(
-                title: '\$${car.price.toString()}/day'),
+            SectionTitleWidget(title: '\$${car.price.toString()}/day'),
           ],
         ),
         Row(
@@ -101,7 +100,7 @@ class RatingWidget extends StatelessWidget {
           (i < rating)
               ? const Icon(
                   Icons.star,
-                  color: Colors.black,
+                  color: Color.fromRGBO(25, 25, 25, 1),
                   size: 14,
                 )
               : const Icon(

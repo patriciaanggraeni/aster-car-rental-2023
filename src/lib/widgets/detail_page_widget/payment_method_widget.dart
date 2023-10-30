@@ -91,7 +91,8 @@ class PaymentMethodItemWidget extends StatelessWidget {
               Radius.circular(10),
             ),
           ),
-          backgroundColor: isSelected ? Colors.black : Colors.white,
+          backgroundColor:
+              isSelected ? const Color.fromRGBO(25, 25, 25, 1) : Colors.white,
         ),
         // icon: Icon(
         //   icon,
@@ -100,7 +101,9 @@ class PaymentMethodItemWidget extends StatelessWidget {
         // ),
         child: Image.asset(
           'assets/icons/$icon.png',
-          color: isSelected ? Colors.white : Colors.black,
+          color:
+              isSelected ? Colors.white : const Color.fromRGBO(25, 25, 25, 1),
+          width: 38,
         ),
       ),
     );

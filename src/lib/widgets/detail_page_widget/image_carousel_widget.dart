@@ -66,7 +66,7 @@ class _CarouselWithIndicatorState extends State<ImageSliderWidget> {
                         Radius.circular(10),
                       ),
                       color: (Theme.of(context).brightness == Brightness.dark
-                              ? Colors.black
+                              ? const Color.fromRGBO(25, 25, 25, 1)
                               : Colors.white)
                           .withOpacity(_current == entry.key ? 1 : 0)),
                 ),

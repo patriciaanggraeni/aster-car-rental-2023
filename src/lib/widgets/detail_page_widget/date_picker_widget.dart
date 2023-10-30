@@ -21,7 +21,9 @@ class DatePickerWidget extends StatelessWidget {
         const SizedBox(height: 6),
         ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.black),
+            backgroundColor: MaterialStateProperty.all(
+              const Color.fromRGBO(25, 25, 25, 1),
+            ),
             padding: MaterialStateProperty.all(
                 const EdgeInsets.symmetric(horizontal: 9)),
             shape: MaterialStateProperty.all(

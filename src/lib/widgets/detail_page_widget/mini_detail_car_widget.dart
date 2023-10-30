@@ -28,10 +28,10 @@ class MiniDetailCarWidget extends StatelessWidget {
     }
 
     return SizedBox(
-      width: 160,
+      width: 120,
       child: Row(
         children: [
-          textDetail(name: attribute, fontWeight: FontWeight.bold, width: 60),
+          textDetail(name: attribute, fontWeight: FontWeight.bold, width: 40),
           textDetail(name: ':', fontWeight: FontWeight.bold, width: 20),
           textDetail(name: value),
         ],
