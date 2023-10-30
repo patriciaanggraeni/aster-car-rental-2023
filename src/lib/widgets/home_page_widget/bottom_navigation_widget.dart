@@ -1,7 +1,7 @@
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:src/home_page/home_page.dart';
+import 'package:src/pages/home_page.dart';
 
 class CustomBottomNavigationWidget extends StatefulWidget {
   CustomBottomNavigationWidget({super.key, required this.currentPage, required this.pageController});

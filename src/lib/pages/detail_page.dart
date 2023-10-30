@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:src/pages/confirm_page.dart';
 import '../models/car.dart';
-import '../widgets/button_bottom_widget.dart';
-import '../widgets/date_picker_widget.dart';
-import '../widgets/detail_car_widget.dart';
-import '../widgets/image_carousel_widget.dart';
-import '../widgets/input_location_widget.dart';
-import '../widgets/payment_method_widget.dart';
-import '../widgets/pickup_location_widget.dart';
+import '../widgets/detail_page_widget/button_bottom_widget.dart';
+import '../widgets/detail_page_widget/date_picker_widget.dart';
+import '../widgets/detail_page_widget/detail_car_widget.dart';
+import '../widgets/detail_page_widget/image_carousel_widget.dart';
+import '../widgets/detail_page_widget/input_location_widget.dart';
+import '../widgets/detail_page_widget/payment_method_widget.dart';
+import '../widgets/detail_page_widget/pickup_location_widget.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({super.key, required this.car});

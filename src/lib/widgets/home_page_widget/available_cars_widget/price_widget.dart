@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:src/home_page/model/Car.dart';
+
+import '../../../models/car.dart';
 
 class CustomPriceWidget extends StatelessWidget {
   const CustomPriceWidget({super.key, required this.availableCar});

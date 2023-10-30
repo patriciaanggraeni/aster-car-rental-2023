@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:src/home_page/widgets/greeting_widget.dart';
+import 'greeting_widget.dart';
 
 class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBarWidget({super.key});

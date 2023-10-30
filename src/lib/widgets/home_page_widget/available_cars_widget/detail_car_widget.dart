@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:src/home_page/model/Car.dart';
+
+import '../../../models/car.dart';
 
 class CustomDetailCarWidget extends StatelessWidget {
   const CustomDetailCarWidget({super.key, required this.availableCar});
@@ -22,7 +23,7 @@ class CustomDetailCarWidget extends StatelessWidget {
               ),
               const SizedBox(width: 3,),
               Text(
-                "${availableCar.speed.toString()}km/h",
+                "${availableCar.maxSpeed.toString()}km/h",
                  style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.normal,
@@ -39,7 +40,7 @@ class CustomDetailCarWidget extends StatelessWidget {
               ),
               const SizedBox(width: 3,),
               Text(
-                "${availableCar.tank.toString()}Ltr",
+                "${availableCar.fuelCapacity.toString()}Ltr",
                  style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.normal,
@@ -56,7 +57,7 @@ class CustomDetailCarWidget extends StatelessWidget {
               ),
               const SizedBox(width: 3,),
               Text(
-                availableCar.seat.toString(),
+                availableCar.seatCount.toString(),
                  style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.normal,

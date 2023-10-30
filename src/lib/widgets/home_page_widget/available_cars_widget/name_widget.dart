@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:src/home_page/model/Car.dart';
+
+import '../../../models/car.dart';
 
 class CustomNameWidget extends StatelessWidget {
   const CustomNameWidget({super.key, required this.availableCar});

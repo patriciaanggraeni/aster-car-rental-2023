@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../models/car.dart';
-import '../widgets/button_bottom_widget.dart';
-import '../widgets/mini_detail_car_widget.dart';
+import '../widgets/detail_page_widget/button_bottom_widget.dart';
+import '../widgets/detail_page_widget/mini_detail_car_widget.dart';
 
 class ConfirmPage extends StatelessWidget {
   const ConfirmPage({
@@ -38,7 +37,7 @@ class ConfirmPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset('assets/images/${car.photos[0]}'),
+              Image.asset('assets/images/cars/innova_zenix/${car.photos[0]}'),
               const SizedBox(height: 12),
               const Text(
                 'We need to complete the process, please scan your ID Card.',

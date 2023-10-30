@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:src/home_page/widgets/available_cars_widget/detail_car_widget.dart';
-import 'package:src/home_page/widgets/available_cars_widget/name_widget.dart';
-import 'package:src/home_page/widgets/available_cars_widget/price_widget.dart';
-import 'package:src/home_page/widgets/available_cars_widget/rating_widget.dart';
-import '../../model/Car.dart';
+import 'package:src/widgets/home_page_widget/available_cars_widget/price_widget.dart';
+import 'package:src/widgets/home_page_widget/available_cars_widget/rating_widget.dart';
+import '../../../models/car.dart';
+import 'detail_car_widget.dart';
+import 'name_widget.dart';
 
 class CustomAvailableCarsWidget extends StatelessWidget {
   const CustomAvailableCarsWidget({super.key, required this.availableCars});
@@ -53,7 +53,11 @@ class CustomAvailableCarsWidget extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Image(image: AssetImage(availableCar.image)),
+                                      Image(
+                                        image: AssetImage(
+                                          "assets/images/cars/${availableCar.imageCover}"
+                                        ),
+                                      ),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [

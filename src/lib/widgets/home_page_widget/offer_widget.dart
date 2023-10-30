@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../model/Car.dart';
+import '../../models/car.dart';
 
 class CustomOfferWidget extends StatelessWidget {
   const CustomOfferWidget({super.key, required this.cars});
@@ -57,9 +56,9 @@ class CustomOfferWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Image.asset(cars[0].image),
+                    Image.asset("assets/images/cars/${cars[1].imageCover}"),
                     Text(
-                      cars[0].name,
+                      cars[1].name,
                       style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontWeight: FontWeight.normal,

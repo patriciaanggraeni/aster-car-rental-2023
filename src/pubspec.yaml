@@ -61,33 +61,34 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images/
     - assets/icons/
-    
-    - assets/images/splash_screen/logo.png
-    - assets/images/splash_screen/text_logo.png
-    - assets/images/splash_screen/splash_screen.png
-    
-    - assets/images/splash_screen/logo.png
-    - assets/images/splash_screen/text_logo.png
-    - assets/images/splash_screen/splash_screen.png
+    - assets/images/brands/
 
-    - assets/images/cars/hummer_h3.png
-    - assets/images/cars/aston_martin_v12.png
-    - assets/images/cars/lamborgini_centenario.png
+    - assets/images/cars/hummer_h3/
+    - assets/images/cars/innova_zenix/
+    - assets/images/cars/aston_martin_v12/
+    - assets/images/cars/lamborgini_centenario/
 
-    - assets/images/brands/jeep_logo.png
-    - assets/images/brands/nissan_logo.png
-    - assets/images/brands/porsche_logo.png
-    - assets/images/brands/mercedes_logo.png
+#    - assets/images/splash_screen/logo.png
+#    - assets/images/splash_screen/text_logo.png
+#    - assets/images/splash_screen/splash_screen.png
 
-    - assets/icons/menu.png
-    - assets/icons/filter.png
-    - assets/icons/search.png
-    - assets/icons/account.png
-    - assets/icons/car_seat.png
-    - assets/icons/speedometer.png
-    - assets/icons/gas_station.png
+#    - assets/images/cars/hummer_h3.png
+#    - assets/images/cars/aston_martin_v12.png
+#    - assets/images/cars/lamborgini_centenario.png
+
+#    - assets/images/brands/jeep_logo.png
+#    - assets/images/brands/nissan_logo.png
+#    - assets/images/brands/porsche_logo.png
+#    - assets/images/brands/mercedes_logo.png
+
+#    - assets/icons/menu.png
+#    - assets/icons/filter.png
+#    - assets/icons/search.png
+#    - assets/icons/account.png
+#    - assets/icons/car_seat.png
+#    - assets/icons/speedometer.png
+#    - assets/icons/gas_station.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
