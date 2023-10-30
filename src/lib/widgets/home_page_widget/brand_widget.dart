@@ -60,6 +60,7 @@ class CustomBrandWidget extends StatelessWidget {
                           padding: const EdgeInsets.all(10),
                           child: Image.asset(
                             "assets/images/brands/${brand.image}",
+                            width: 40,
                           ),
                         ),
                       ),
