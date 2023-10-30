@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:src/widgets/button_front_widget.dart';
-import 'package:src/widgets/google_signup_widget.dart';
-import 'package:src/widgets/upper_logo_widget.dart';
-import 'package:src/widgets/custom_field_widget.dart';
+import 'package:src/widgets/auth_page_widget/button_front_widget.dart';
+import 'package:src/widgets/auth_page_widget/google_signup_widget.dart';
+import 'package:src/widgets/auth_page_widget/upper_logo_widget.dart';
+import 'package:src/widgets/auth_page_widget/custom_field_widget.dart';
 
 class RegisterPage extends StatelessWidget{
   const RegisterPage({super.key});
