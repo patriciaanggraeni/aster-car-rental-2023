@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:src/home_page/widgets/app_bar_widget.dart';
 import 'package:src/home_page/widgets/bottom_navigation_widget.dart';
+import 'package:src/pages/login_page.dart';
 import 'package:src/splash_screen/splash_screen.dart';
 import 'home_page/home_page.dart';
 import 'package:src/pages/detail_page.dart';
 import 'models/car.dart';
+import 'package:src/pages/register_page.dart';
 
 void main() => runApp(const MyApp());
 

@@ -88,6 +88,8 @@ flutter:
     - assets/icons/car_seat.png
     - assets/icons/speedometer.png
     - assets/icons/gas_station.png
+
+    - assets/icons/google.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -130,3 +132,8 @@ flutter:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
+    
+    - family: Zeniq
+      fonts:
+        - asset : assets/fonts/Zeniq.ttf
+          weight : 400
