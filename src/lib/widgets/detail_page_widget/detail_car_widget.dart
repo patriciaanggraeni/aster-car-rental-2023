@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-
-import '../models/car.dart';
+import '../../models/car.dart';
 import 'section_title_widget.dart';
 
 class DetailCarWidget extends StatelessWidget {
   const DetailCarWidget({super.key, required this.car});
-
   final Car car;
 
   @override
@@ -18,14 +16,14 @@ class DetailCarWidget extends StatelessWidget {
           children: [
             SectionTitleWidget(title: car.name, fontSize: 22),
             SectionTitleWidget(
-                title: '${car.rentalPricePerDay.toString()}k/day'),
+                title: '${car.price.toString()}k/day'),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SectionTitleWidget(title: car.type),
-            RatingWidget(rating: car.rating),
+            RatingWidget(rating: car.rating.toInt()),
           ],
         ),
         const SizedBox(height: 8),

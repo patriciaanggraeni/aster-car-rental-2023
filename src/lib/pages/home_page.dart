@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:src/home_page/model/BrandSeeder.dart';
-import 'package:src/home_page/model/CarSeeder.dart';
-import 'package:src/home_page/widgets/app_bar_widget.dart';
-import 'package:src/home_page/widgets/available_cars_widget/avaible_cars_widget.dart';
-import 'package:src/home_page/widgets/bottom_navigation_widget.dart';
-import 'package:src/home_page/widgets/brand_widget.dart';
-import 'package:src/home_page/widgets/filter_widget.dart';
-import 'package:src/home_page/widgets/offer_widget.dart';
-import 'package:src/home_page/widgets/search_field_widget.dart';
-import 'package:src/pages/detail_page.dart';
-
+import 'package:src/models/brand_seeder.dart';
+import 'package:src/models/car_seeder.dart';
+import 'package:src/widgets/home_page_widget/app_bar_widget.dart';
 import '../models/car.dart';
+import '../widgets/home_page_widget/available_cars_widget/avaible_cars_widget.dart';
+import '../widgets/home_page_widget/bottom_navigation_widget.dart';
+import '../widgets/home_page_widget/brand_widget.dart';
+import '../widgets/home_page_widget/filter_widget.dart';
+import '../widgets/home_page_widget/offer_widget.dart';
+import '../widgets/home_page_widget/search_field_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,6 +39,7 @@ class _HomePageState extends State<HomePage> {
           ListView.builder(
             itemCount: 1,
             itemBuilder: (context, index) {
+              Car car = _cars[index];
               return Column(
                 children: [
                   const Padding(

@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:src/home_page/widgets/app_bar_widget.dart';
 import 'package:src/home_page/widgets/bottom_navigation_widget.dart';
 import 'package:src/pages/login_page.dart';
 import 'package:src/splash_screen/splash_screen.dart';
 import 'home_page/home_page.dart';
+=======
+import 'package:src/pages/about.dart';
+import 'package:src/widgets/home_page_widget/app_bar_widget.dart';
+import 'package:src/pages/splash_screen.dart';
+import 'pages/home_page.dart';
+>>>>>>> 9fefecfa63eb76e1d8025c2bb9fbe66801be36f7
 import 'package:src/pages/detail_page.dart';
 import 'models/car.dart';
 import 'package:src/pages/register_page.dart';
@@ -16,27 +23,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    Car innovaZenix = Car(
-      name: "Innova Zenix 2023",
-      rentalPricePerDay: 400,
-      type: "V Hybrid",
-      description:
-          "All New Kijang Innova Zenix 2023 is a spacious and fuel-efficient family car with seating for 7 people.",
-      transmissionType: "Automatic",
-      color: 'White',
-      maxSpeed: 250,
-      fuelCapacity: 52,
-      doorCount: 4,
-      seatCount: 7,
-      rating: 4,
-      photos: [
-        "zenix_front.png",
-        "zenix_back.png",
-        "zenix_side.png",
-      ],
-    );
-
     return const MaterialApp(
       title: 'Aster Retsa Car Rental',
       home: HomePage(),

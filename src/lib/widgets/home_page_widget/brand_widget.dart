@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:src/home_page/model/Brand.dart';
+import 'package:src/models/brand.dart';
 
 class CustomBrandWidget extends StatelessWidget {
   const CustomBrandWidget({super.key, required this.brands});
@@ -59,7 +59,7 @@ class CustomBrandWidget extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: Image.asset(
-                            brand.image,
+                            "assets/images/brands/${brand.image}",
                           ),
                         ),
                       ),
