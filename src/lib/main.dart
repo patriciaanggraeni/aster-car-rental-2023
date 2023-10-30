@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:src/pages/about.dart';
-import 'package:src/widgets/home_page_widget/app_bar_widget.dart';
-import 'package:src/pages/splash_screen.dart';
-import 'pages/home_page.dart';
+import 'package:src/pages/login_page.dart';
 import 'package:src/pages/detail_page.dart';
 import 'models/car.dart';
 import 'package:src/pages/register_page.dart';
+import 'package:src/pages/home_page.dart';
 
 void main() => runApp(const MyApp());
 
