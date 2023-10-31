@@ -13,21 +13,22 @@ Aplikasi Aster Car Rental adalah platform penyewaan mobil yang memudahkan penggu
 5. Shofiatul Ayu Anikaningrum (2141720048)
 
 ## Tangkapan Layar
-<img src="docs/demo.gif" style="width: 400px">
+<img src="docs/demo2.gif" style="width: 400px">
 
 ## Layar dan Penanggung Jawab
 
-| No. | Nama Layar   | Fitur | PIC                         |
-|-----|--------------|-------|-----------------------------|
-| 1   | Splash       | -     | Patria Anggara Susilo Putra |
-| 2   | Dashboard    | -     | Patria Anggara Susilo Putra |
-| 3   | Detail       | -     | Bahtiar Rifa'i              |
-| 4   | Confirm Page | -     | Bahtiar Rifa'i              |
-| 5   | History      | -     | Arya Wicaksana Hidayat      |
-| 6   | Register     | -     | Salma Annissa Azizi         |
-| 7   | Login        | -     | Salma Annissa Azizi         |
-| 8   | Profile      | -     | Shofiatul Ayu Anikaningrum  |
-| 9   | About        | -     | Shofiatul Ayu Anikaningrum  |
+| No. | Nama Layar    | Fitur | PIC                         |
+|-----|---------------|-------|-----------------------------|
+| 1   | Splash        | -     | Patria Anggara Susilo Putra |
+| 2   | Dashboard     | -     | Patria Anggara Susilo Putra |
+| 3   | Detail        | -     | Bahtiar Rifa'i              |
+| 4   | Confirm Page  | -     | Bahtiar Rifa'i              |
+| 5   | History       | -     | Arya Wicaksana Hidayat      |
+| 6   | Scan ID Card  | -     | Arya Wicaksana Hidayat      |
+| 7   | Register      | -     | Salma Annissa Azizi         |
+| 8   | Login         | -     | Salma Annissa Azizi         |
+| 9   | Profile       | -     | Shofiatul Ayu Anikaningrum  |
+| 10  | About         | -     | Shofiatul Ayu Anikaningrum  |
 
 ## Desain Figma
 [![Desain Figma](docs/figma.png)](https://www.figma.com/file/JN3NF4Mj4YgfXvcIrp6oxQ/Aster-Retsa-Car-Rental?type=design&node-id=0%3A1&mode=design&t=H23bVyz7KepYCP0V-1)
