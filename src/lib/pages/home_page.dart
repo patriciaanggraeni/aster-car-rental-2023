@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:src/models/brand_seeder.dart';
 import 'package:src/models/car_seeder.dart';
-import 'package:src/pages/about.dart';
+import 'package:src/pages/about_page.dart';
 import 'package:src/pages/detail_page.dart';
 import 'package:src/pages/history_page.dart';
 import 'package:src/pages/login_page.dart';
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
           elevation: 0,
-          title: const CustomAppBarWidget(),
+          title: CustomAppBarWidget(),
         ),
         body: PageView(
           controller: _pageController,

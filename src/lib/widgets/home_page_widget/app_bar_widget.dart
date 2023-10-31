@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:src/pages/profile_page.dart';
 import 'greeting_widget.dart';
 
 class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -21,10 +22,19 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
             const CustomGreetingWidget(),
           ],
         ),
-        Image.asset(
-          "assets/icons/account.png",
-          width: 35,
-          color: const Color(0xFF222525),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const ProfilePage()),
+              );
+          },
+          child: Image.asset(
+            "assets/icons/account.png",
+            width: 35,
+            color: const Color(0xFF222525),
+          ),
         ),
       ],
     );

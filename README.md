@@ -13,7 +13,7 @@ Aplikasi Aster Car Rental adalah platform penyewaan mobil yang memudahkan penggu
 5. Shofiatul Ayu Anikaningrum (2141720048)
 
 ## Tangkapan Layar
-![Screenshot Hasil Demo Program](docs/demo.gif)
+<img src="docs/demo.gif" style="width: 400px">
 
 ## Layar dan Penanggung Jawab
 
