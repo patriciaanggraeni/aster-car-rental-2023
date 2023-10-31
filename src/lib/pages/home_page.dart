@@ -37,7 +37,14 @@ class _HomePageState extends State<HomePage> {
       routes: {
         detailPageRoute: (context) => const DetailPage(),
       },
-      home: Scaffold (
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        colorScheme: const ColorScheme.light(
+          primary: Colors.black,
+          background: Colors.white,
+        ),
+      ),
+      home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -47,7 +54,9 @@ class _HomePageState extends State<HomePage> {
         ),
         body: PageView(
           controller: _pageController,
-          onPageChanged: (index) => setState(() { _currentPage = index; }),
+          onPageChanged: (index) => setState(() {
+            _currentPage = index;
+          }),
           children: [
             ListView.builder(
               itemCount: 1,
@@ -69,7 +78,8 @@ class _HomePageState extends State<HomePage> {
                     CustomOfferWidget(cars: _cars),
                     CustomBrandWidget(brands: _brands),
                     InkWell(
-                      onTap: () => Navigator.pushNamed(context, detailPageRoute, arguments: car),
+                      onTap: () => Navigator.pushNamed(context, detailPageRoute,
+                          arguments: car),
                       child: CustomAvailableCarsWidget(availableCars: _cars),
                     )
                   ],
@@ -80,52 +90,11 @@ class _HomePageState extends State<HomePage> {
             HistoryPage(),
             const LoginPage(),
             const RegisterPage(),
-            About(),
+            const About(),
           ],
         ),
-        bottomNavigationBar: CustomBottomNavigationWidget(currentPage: _currentPage, pageController: _pageController),
-      ),
-    );
-  }
-}
-
-class Page3 extends StatelessWidget {
-  const Page3({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xffC4DFCB),
-      child: Center(
-        child: Text(
-          "Page Number 3",
-          style: TextStyle(
-            color: Colors.green[900],
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page4 extends StatelessWidget {
-  const Page4({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xffC4DFCB),
-      child: Center(
-        child: Text(
-          "Page Number 4",
-          style: TextStyle(
-            color: Colors.green[900],
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        bottomNavigationBar: CustomBottomNavigationWidget(
+            currentPage: _currentPage, pageController: _pageController),
       ),
     );
   }
