@@ -4,7 +4,7 @@ import 'package:src/widgets/auth_page_widget/google_signup_widget.dart';
 import 'package:src/widgets/auth_page_widget/upper_logo_widget.dart';
 import 'package:src/widgets/auth_page_widget/custom_field_widget.dart';
 
-class RegisterPage extends StatelessWidget{
+class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
   @override
@@ -13,7 +13,7 @@ class RegisterPage extends StatelessWidget{
       backgroundColor: const Color.fromARGB(255, 34, 37, 37),
       body: SafeArea(
         child: Center(
-          child: Column(
+          child: ListView(
             children: [
               const SizedBox(
                 height: 50,
@@ -23,26 +23,31 @@ class RegisterPage extends StatelessWidget{
                 height: 60,
               ),
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('REGISTER', 
-                    style: TextStyle(
-                      fontFamily: 'Poppins', 
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFFFDFDFD),),
+                    Text(
+                      'REGISTER',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFFDFDFD),
+                      ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 10),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal:20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: const Column(
                   children: [
-                    CustomField(hintText: 'Email', obsecure: false,),
+                    CustomField(
+                      hintText: 'Email',
+                      obsecure: false,
+                    ),
                     SizedBox(height: 10),
                     CustomField(hintText: 'Password', obsecure: true),
                   ],
@@ -50,12 +55,12 @@ class RegisterPage extends StatelessWidget{
               ),
               const SizedBox(height: 10),
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
-                child: const ButtonFront(theText: 'Register')),
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: const ButtonFront(theText: 'Register')),
               const SizedBox(height: 100),
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
-                child: const GoogleSignUp()),
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: const GoogleSignUp()),
             ],
           ),
         ),

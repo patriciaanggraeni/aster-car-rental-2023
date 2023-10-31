@@ -23,7 +23,7 @@ class HistoryPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('History'),
-        backgroundColor: Color.fromARGB(255, 34, 37, 37),
+        backgroundColor: const Color.fromARGB(255, 34, 37, 37),
       ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -33,52 +33,52 @@ class HistoryPage extends StatelessWidget {
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
-          return InkWell(
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(
-                    25), // Tambahkan padding pada keseluruhan Card
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Hero(
-                      tag: 'productImage${item.name}',
-                      child: AspectRatio(
-                        aspectRatio:
-                            2, // Rasio lebar-tinggi 1:1 untuk ukuran yang sama
-                        child: Image.asset(item.imageUrl, fit: BoxFit.fitWidth),
-                      ),
+          return Card(
+            child: Padding(
+              padding: const EdgeInsets.all(
+                  25), // Tambahkan padding pada keseluruhan Card
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Hero(
+                    tag: 'productImage${item.name}',
+                    child: AspectRatio(
+                      aspectRatio:
+                          2, // Rasio lebar-tinggi 1:1 untuk ukuran yang sama
+                      child: Image.asset(item.imageUrl, fit: BoxFit.fitWidth),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .spaceBetween, // Agar rating berada di sebelah kanan
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 1), // Padding di atas teks "name"
-                          child: Text(
-                            item.name,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .spaceBetween, // Agar rating berada di sebelah kanan
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 1), // Padding di atas teks "name"
+                        child: Text(
+                          item.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            item.rating.toString(),
                             style: const TextStyle(
+                              color: Color.fromARGB(255, 34, 37, 37),
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
                           ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              item.rating.toString(),
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 34, 37, 37),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Padding(
+                        ],
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Text(
                         item.price.toString(),
@@ -88,15 +88,15 @@ class HistoryPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(
-                      '20th March 2023  =>  28th March 2023',
-                      style: const TextStyle(
-                        color: Color.fromARGB(255, 34, 37, 37),
-                        fontSize: 14,
-                      ),
+                  ),
+                  const Text(
+                    '20th March 2023  =>  28th March 2023',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 34, 37, 37),
+                      fontSize: 14,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           );

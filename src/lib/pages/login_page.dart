@@ -5,7 +5,7 @@ import 'package:src/widgets/auth_page_widget/register_button_sal_widget.dart';
 import 'package:src/widgets/auth_page_widget/upper_logo_widget.dart';
 import 'package:src/widgets/auth_page_widget/custom_field_widget.dart';
 
-class LoginPage extends StatelessWidget{
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget{
       backgroundColor: const Color.fromARGB(255, 34, 37, 37),
       body: SafeArea(
         child: Center(
-          child: Column(
+          child: ListView(
             children: [
               const SizedBox(
                 height: 50,
@@ -24,26 +24,31 @@ class LoginPage extends StatelessWidget{
                 height: 60,
               ),
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('LOGIN', 
-                    style: TextStyle(
-                      fontFamily: 'Poppins', 
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFFFDFDFD),),
+                    Text(
+                      'LOGIN',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFFDFDFD),
+                      ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 10),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal:20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: const Column(
                   children: [
-                    CustomField(hintText: 'Username', obsecure: false,),
+                    CustomField(
+                      hintText: 'Username',
+                      obsecure: false,
+                    ),
                     SizedBox(height: 10),
                     CustomField(hintText: 'Password', obsecure: true),
                   ],
@@ -51,33 +56,36 @@ class LoginPage extends StatelessWidget{
               ),
               const SizedBox(height: 10),
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20),
                 child: const ButtonFront(theText: 'Login'),
-                ),
-                const SizedBox(height: 5),
+              ),
+              const SizedBox(height: 5),
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20),
                 child: const Row(
                   children: [
-                    Text('Dont\'t have any account?', style: TextStyle(
-                      fontFamily: 'Poppins', 
-                      fontSize: 12,
-                      fontWeight: FontWeight.w100,
-                      color: Color(0xFFFDFDFD),),    
+                    Text(
+                      'Dont\'t have any account?',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w100,
+                        color: Color(0xFFFDFDFD),
+                      ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height:10),
+              const SizedBox(height: 10),
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
-                child: const Column(
-                  children: [
-                    RegisterButton(),
-                    SizedBox(height:30),
-                    GoogleSignUp(),
-                  ],
-                )),
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: const Column(
+                    children: [
+                      RegisterButton(),
+                      SizedBox(height: 30),
+                      GoogleSignUp(),
+                    ],
+                  )),
             ],
           ),
         ),
