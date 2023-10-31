@@ -37,9 +37,9 @@ class CarSeeder {
       seatCount: 7,
       rating: 4,
       photos: [
-        "zenix_front.png",
-        "zenix_back.png",
-        "zenix_side.png",
+        "cars/innova_zenix/zenix_front.png",
+        "cars/innova_zenix/zenix_back.png",
+        "cars/innova_zenix/zenix_side.png",
       ],
     ),
     Car(

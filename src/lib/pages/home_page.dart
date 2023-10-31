@@ -28,52 +28,63 @@ class _HomePageState extends State<HomePage> {
   final _brands = BrandSeeder().getListBrand();
   final _pageController = PageController();
 
+  final detailPageRoute = '/detail_page';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        detailPageRoute: (context) => const DetailPage(),
+      },
+      home: Scaffold (
         backgroundColor: Colors.white,
-        elevation: 0,
-        title: const CustomAppBarWidget(),
-      ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) => setState(() { _currentPage = index; }),
-        children: [
-          ListView.builder(
-            itemCount: 1,
-            itemBuilder: (context, index) {
-              Car car = _cars[index];
-              return Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomSearchFieldWidget(),
-                        CustomFilterWidget(),
-                      ],
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const CustomAppBarWidget(),
+        ),
+        body: PageView(
+          controller: _pageController,
+          onPageChanged: (index) => setState(() { _currentPage = index; }),
+          children: [
+            ListView.builder(
+              itemCount: 1,
+              itemBuilder: (context, index) {
+                Car car = _cars[index];
+                return Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomSearchFieldWidget(),
+                          CustomFilterWidget(),
+                        ],
+                      ),
                     ),
-                  ),
-                  CustomOfferWidget(cars: _cars),
-                  CustomBrandWidget(brands: _brands),
-                  CustomAvailableCarsWidget(availableCars: _cars),
-                ],
-              );
-            },
-          ),
-          // DetailPage(car: CarSeeder().innovaZenix),
-          HistoryPage(),
-          const LoginPage(),
-          const RegisterPage(),
-          About(),
-        ],
+                    CustomOfferWidget(cars: _cars),
+                    CustomBrandWidget(brands: _brands),
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(context, detailPageRoute, arguments: car),
+                      child: CustomAvailableCarsWidget(availableCars: _cars),
+                    )
+                  ],
+                );
+              },
+            ),
+            // DetailPage(car: CarSeeder().innovaZenix),
+            HistoryPage(),
+            const LoginPage(),
+            const RegisterPage(),
+            About(),
+          ],
+        ),
+        bottomNavigationBar: CustomBottomNavigationWidget(currentPage: _currentPage, pageController: _pageController),
       ),
-      bottomNavigationBar: CustomBottomNavigationWidget(currentPage: _currentPage, pageController: _pageController),
     );
   }
 }
