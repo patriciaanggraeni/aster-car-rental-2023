@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:src/pages/home_page.dart';
+
 import '../models/car.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
 import '../widgets/detail_page_widget/mini_detail_car_widget.dart';
@@ -18,16 +20,26 @@ class ConfirmPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const Padding(
-        padding: EdgeInsets.all(10),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ButtonBottomWidget(
+            const ButtonBottomWidget(
               name: 'Scan ID Card',
               icon: Icons.qr_code_scanner,
             ),
-            ButtonBottomWidget(name: 'Confirm'),
+            ButtonBottomWidget(
+              name: 'Confirm',
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
