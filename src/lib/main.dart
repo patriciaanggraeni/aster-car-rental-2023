@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:src/about/about.dart';
-import 'package:src/home_page/widgets/app_bar_widget.dart';
-import 'package:src/home_page/widgets/bottom_navigation_widget.dart';
+import 'package:src/pages/about.dart';
 import 'package:src/pages/confirm_page.dart';
-import 'package:src/profile/profile.dart';
-import 'package:src/splash_screen/splash_screen.dart';
-import 'home_page/home_page.dart';
-=======
+import 'package:src/pages/profile.dart';
 import 'package:src/pages/login_page.dart';
->>>>>>> 552f458149ae57ca20d1c128eb6ccba1048a64ac
 import 'package:src/pages/detail_page.dart';
 import 'models/car.dart';
 import 'package:src/pages/register_page.dart';
@@ -23,10 +16,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Aster Retsa Car Rental',
-<<<<<<< HEAD
-      home: HomePage(),
+
+      home: About(),
       //   homePageRoute: (context) => HomePage(),
       // },
       // theme: ThemeData(
@@ -38,17 +31,16 @@ class MyApp extends StatelessWidget {
       //   useMaterial3: true,
       // ),
       // home: DetailPage(car: innovaZenix),
-=======
-      home: const HomePage(),
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        colorScheme: const ColorScheme.light(
-          primary: Colors.black,
-          background: Colors.white,
-        ),
-        // useMaterial3: true,
-      ),
->>>>>>> 552f458149ae57ca20d1c128eb6ccba1048a64ac
+
+      // home: const HomePage(),
+      // theme: ThemeData(
+      //   fontFamily: 'Poppins',
+      //   colorScheme: const ColorScheme.light(
+      //     primary: Colors.black,
+      //     background: Colors.white,
+      //   ),
+      //   // useMaterial3: true,
+      // ),
     );
   }
 }
