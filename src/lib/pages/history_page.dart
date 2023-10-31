@@ -1,25 +1,27 @@
 import 'package:src/models/history_item.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HistoryPage extends StatelessWidget {
   final List<Item> items = [
     Item(
         name: 'Hummer H3',
         price: '34757HH55SHD4755',
-        imageUrl: 'src/assets/images/cars/hummer_h3/hummer_h3.png',
+        imageUrl: 'assets/images/cars/hummer_h3/hummer_h3.png',
         rating: 'USD 5600'),
     Item(
         name: 'Aston Martin V12',
         price: '7FHW87458EFUHUS8',
-        imageUrl:
-            'src/assets/images/cars/aston_martin_v12/aston_martin_v12.png',
+        imageUrl: 'assets/images/cars/aston_martin_v12/aston_martin_v12.png',
         rating: 'USD 1800'),
   ];
+
+  HistoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('History'),
         backgroundColor: Color.fromARGB(255, 34, 37, 37),
       ),

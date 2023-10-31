@@ -3,6 +3,7 @@ import 'package:src/models/brand_seeder.dart';
 import 'package:src/models/car_seeder.dart';
 import 'package:src/pages/about.dart';
 import 'package:src/pages/detail_page.dart';
+import 'package:src/pages/history_page.dart';
 import 'package:src/pages/login_page.dart';
 import 'package:src/pages/register_page.dart';
 import 'package:src/widgets/home_page_widget/app_bar_widget.dart';
@@ -32,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold (
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         title: const CustomAppBarWidget(),
@@ -64,7 +66,8 @@ class _HomePageState extends State<HomePage> {
               );
             },
           ),
-          DetailPage(car: CarSeeder().innovaZenix),
+          // DetailPage(car: CarSeeder().innovaZenix),
+          HistoryPage(),
           const LoginPage(),
           const RegisterPage(),
           About(),

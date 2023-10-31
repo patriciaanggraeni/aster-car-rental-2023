@@ -97,7 +97,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, MyApp.homePageRoute);
+                Navigator.pushNamed(context, MyApp.homePageRoute);
               },
               child: Text(
                 "Let's Go",

@@ -4,6 +4,7 @@ import 'package:src/pages/confirm_page.dart';
 import 'package:src/pages/profile.dart';
 import 'package:src/pages/login_page.dart';
 import 'package:src/pages/detail_page.dart';
+import 'package:src/pages/splash_screen.dart';
 import 'models/car.dart';
 import 'package:src/pages/register_page.dart';
 import 'package:src/pages/home_page.dart';
@@ -16,10 +17,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Aster Retsa Car Rental',
-
-      home: About(),
+      initialRoute: '/',
+      routes: {
+        homePageRoute: (context) => const HomePage(),
+      },
+      home: const HomePage(),
       //   homePageRoute: (context) => HomePage(),
       // },
       // theme: ThemeData(
