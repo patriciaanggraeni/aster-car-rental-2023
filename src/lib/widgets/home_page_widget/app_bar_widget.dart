@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:src/pages/menu_page.dart';
 import 'package:src/pages/profile_page.dart';
 import 'greeting_widget.dart';
 
-class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBarWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   const CustomAppBarWidget({super.key});
 
   @override
@@ -18,7 +20,9 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
               color: const Color(0xFF222525),
               width: 35,
             ),
-            const SizedBox(width: 15,),
+            const SizedBox(
+              width: 15,
+            ),
             const CustomGreetingWidget(),
           ],
         ),
@@ -26,9 +30,8 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => const ProfilePage()),
-              );
+              MaterialPageRoute(builder: (context) => const MenuPage()),
+            );
           },
           child: Image.asset(
             "assets/icons/account.png",
@@ -41,5 +44,5 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   }
 
   @override
-  Size get preferredSize =>  const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

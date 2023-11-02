@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:src/pages/splash_screen.dart';
-import 'package:src/pages/home_page.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  static const String homePageRoute = '/home_page';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aster Retsa Car Rental',
-      initialRoute: '/',
-      routes: {
-        homePageRoute: (context) => const HomePage(),
-      },
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        colorScheme: const ColorScheme.light(
+          primary: Color.fromRGBO(25, 25, 25, 1),
+          background: Colors.white,
+        ),
+      ),
       home: const SplashScreen(),
     );
   }

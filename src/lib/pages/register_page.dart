@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:src/pages/login_page.dart';
 import 'package:src/widgets/auth_page_widget/button_front_widget.dart';
+import 'package:src/widgets/auth_page_widget/custom_field_widget.dart';
 import 'package:src/widgets/auth_page_widget/google_signup_widget.dart';
 import 'package:src/widgets/auth_page_widget/upper_logo_widget.dart';
-import 'package:src/widgets/auth_page_widget/custom_field_widget.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -55,8 +56,12 @@ class RegisterPage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20),
-                  child: const ButtonFront(theText: 'Register')),
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                child: const ButtonFront(
+                  theText: 'Register',
+                  toPage: LoginPage(),
+                ),
+              ),
               const SizedBox(height: 100),
               Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),

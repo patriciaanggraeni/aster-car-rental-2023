@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:src/pages/confirm_page.dart';
+
 import '../models/car.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
 import '../widgets/detail_page_widget/date_picker_widget.dart';
@@ -11,7 +12,12 @@ import '../widgets/detail_page_widget/payment_method_widget.dart';
 import '../widgets/detail_page_widget/pickup_location_widget.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
+  const DetailPage({
+    super.key,
+    required this.car,
+  });
+
+  final Car car;
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -67,7 +73,6 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final car = ModalRoute.of(context)!.settings.arguments as Car;
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10),
@@ -78,7 +83,7 @@ class _DetailPageState extends State<DetailPage> {
               context,
               MaterialPageRoute(
                 builder: (context) => ConfirmPage(
-                  car: car,
+                  car: widget.car,
                   date: date,
                   location: location,
                   paymentMethod: selectedPaymentMethod,
@@ -93,7 +98,7 @@ class _DetailPageState extends State<DetailPage> {
           Container(
             height: 262,
             color: const Color(0XFF222525),
-            child: ImageSliderWidget(images: car.photos),
+            child: ImageSliderWidget(images: widget.car.photos),
           ),
           const SizedBox(height: 8),
           Container(
@@ -101,7 +106,7 @@ class _DetailPageState extends State<DetailPage> {
             child: Column(
               children: [
                 DetailCarWidget(
-                  car: car,
+                  car: widget.car,
                 ),
                 const SizedBox(height: 16),
                 PickupLocationWidget(

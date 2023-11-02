@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:src/main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:src/pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -101,7 +101,12 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, MyApp.homePageRoute);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
                       },
                       child: Text(
                         "Let's Go",

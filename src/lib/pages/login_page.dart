@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:src/pages/home_page.dart';
+import 'package:src/pages/register_page.dart';
 import 'package:src/widgets/auth_page_widget/button_front_widget.dart';
 import 'package:src/widgets/auth_page_widget/google_signup_widget.dart';
 import 'package:src/widgets/auth_page_widget/register_button_sal_widget.dart';
@@ -57,7 +59,10 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
-                child: const ButtonFront(theText: 'Login'),
+                child: const ButtonFront(
+                  theText: 'Login',
+                  toPage: HomePage(),
+                ),
               ),
               const SizedBox(height: 5),
               Container(
