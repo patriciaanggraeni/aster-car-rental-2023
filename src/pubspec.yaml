@@ -30,7 +30,6 @@ environment:
 dependencies:
   bottom_bar: ^2.0.3
   google_fonts: ^6.1.0
-  bottom_sheet: ^4.0.0
   salomon_bottom_bar: ^3.3.2
   floating_bottom_navigation_bar: ^1.5.2
 
