@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ButtonFront extends StatelessWidget {
   final String theText;
@@ -16,7 +17,14 @@ class ButtonFront extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => toPage),
+          PageTransition(
+              ctx: context,
+              child: toPage,
+              inheritTheme: true,
+              alignment: Alignment.bottomCenter,
+              duration: const Duration(milliseconds: 500),
+              type: PageTransitionType.rightToLeft
+          ),
         );
       },
       style: ButtonStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:src/pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         _isLoading = false;
       });
@@ -101,10 +102,15 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
+                    PageTransition(
+                        ctx: context,
+                        child: const LoginPage(),
+                        inheritTheme: true,
+                        alignment: Alignment.bottomCenter,
+                        duration: const Duration(milliseconds: 500),
+                        type: PageTransitionType.rightToLeft
                     ),
                   );
                 },

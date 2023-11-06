@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:src/pages/home_page.dart';
 import 'package:src/pages/login_page.dart';
+import 'package:src/pages/menu_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -10,28 +13,43 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        title: const Text('Back'),
+        title: Text(
+          'Back',
+          style: GoogleFonts.poppins(
+            color: const Color(0xFF222525),
+          ),
+        ),
         elevation: 1,
-        leadingWidth: 100,
         leading: Row(
           children: [
             IconButton(
               icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
-                size: 20,
+                size: 25,
               ),
-              onPressed: () {},
+              onPressed: () {
+                 Navigator.push(
+                  context,
+                  PageTransition(
+                    ctx: context,
+                    child: const MenuPage(),
+                    inheritTheme: true,
+                    duration: const Duration(milliseconds: 500),
+                    type: PageTransitionType.bottomToTop,
+                  ),
+                );
+              },
             ),
-            const SizedBox(width: 1),
-            Text(
-              'Back',
-              style: GoogleFonts.poppins(
-                color: Colors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
+            // const SizedBox(width: 1),
+            // Text(
+            //   'Back',
+            //   style: GoogleFonts.poppins(
+            //     color: Colors.black,
+            //     fontSize: 14,
+            //     fontWeight: FontWeight.normal,
+            //   ),
+            // ),
           ],
         ),
       ),

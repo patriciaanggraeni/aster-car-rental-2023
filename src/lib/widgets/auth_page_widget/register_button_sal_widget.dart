@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:src/pages/register_page.dart';
 
 class RegisterButton extends StatelessWidget {
@@ -11,8 +12,13 @@ class RegisterButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => const RegisterPage(),
+        PageTransition(
+           ctx: context,
+           child: const RegisterPage(),
+           inheritTheme: true,
+           alignment: Alignment.bottomCenter,
+           duration: const Duration(milliseconds: 500),
+           type: PageTransitionType.rightToLeft
         ),
       ),
       style: ButtonStyle(
