@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:src/pages/home_page.dart';
+import 'package:src/pages/verification_profile_page.dart';
 
 import '../models/car.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
 import '../widgets/detail_page_widget/mini_detail_car_widget.dart';
+import 'scan_page.dart';
 
 class ConfirmPage extends StatelessWidget {
   const ConfirmPage({
@@ -25,14 +27,22 @@ class ConfirmPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const ButtonBottomWidget(
+            ButtonBottomWidget(
               name: 'Scan ID Card',
               icon: Icons.qr_code_scanner,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const VerificationProfilePage(),
+                  ),
+                );
+              },
             ),
             ButtonBottomWidget(
               name: 'Confirm',
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const HomePage(),

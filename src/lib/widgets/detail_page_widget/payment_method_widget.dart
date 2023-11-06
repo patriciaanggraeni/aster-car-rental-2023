@@ -94,11 +94,6 @@ class PaymentMethodItemWidget extends StatelessWidget {
           backgroundColor:
               isSelected ? const Color.fromRGBO(25, 25, 25, 1) : Colors.white,
         ),
-        // icon: Icon(
-        //   icon,
-        //   size: 36,
-        //   color: isSelected ? Colors.white : Colors.black,
-        // ),
         child: Image.asset(
           'assets/icons/$icon.png',
           color:
