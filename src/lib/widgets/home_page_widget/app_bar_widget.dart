@@ -15,14 +15,6 @@ class CustomAppBarWidget extends StatelessWidget
       children: [
         Row(
           children: [
-            Image.asset(
-              "assets/icons/menu.png",
-              color: const Color(0xFF222525),
-              width: 35,
-            ),
-            const SizedBox(
-              width: 15,
-            ),
             const CustomGreetingWidget(),
           ],
         ),

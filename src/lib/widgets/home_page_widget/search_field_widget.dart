@@ -8,7 +8,7 @@ class CustomSearchFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45,
-      width: 265,
+      width: 280,
       child: TextField(
         cursorColor: const Color(0xFF222525),
         decoration: InputDecoration(
