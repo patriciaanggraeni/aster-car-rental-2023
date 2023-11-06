@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:src/pages/splash_screen.dart';
+import 'package:src/pages/verification_profile_page.dart';
 
-void main() => runApp(const MyApp());
+// void main() => runApp(const MyApp());
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

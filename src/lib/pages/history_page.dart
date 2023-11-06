@@ -26,15 +26,14 @@ class HistoryPage extends StatelessWidget {
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1, // Menampilkan 2 item per baris
-          childAspectRatio: 1.3, // Mengatur rasio lebar-tinggi item
+          childAspectRatio: 1.2, // Mengatur rasio lebar-tinggi item
         ),
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
           return Card(
             child: Padding(
-              padding: const EdgeInsets.all(
-                  25), // Tambahkan padding pada keseluruhan Card
+              padding: const EdgeInsets.all(25), // Tambahkan padding pada keseluruhan Card
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -2,25 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:src/pages/home_page.dart';
 
-class About extends StatefulWidget {
+class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
-
-  @override
-  _AboutState createState() => _AboutState();
-}
-
-class _AboutState extends State<About> {
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
-      setState(() {
-        _isLoading = false;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,45 +97,6 @@ class _AboutState extends State<About> {
                       ),
                     ),
                   ),
-                  // Text(
-                  //     "We provide luxury car rental services which you can access via Aster Retsa easily. We offer the best prices on the market and we guarantee you will not be disappointed. You can rent with a predetermined agreement, unlimited time limit, only with the guarantee of an ID card.",
-                  //     style: GoogleFonts.poppins(
-                  //       color: Colors.white,
-                  //       fontWeight: FontWeight.normal,
-                  //       fontSize: 12,
-                  //     )),
-                  const SizedBox(height: 20),
-                  _isLoading
-                      ? const CircularProgressIndicator(
-                          color: Colors.white,
-                        )
-                      : ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(345, 50),
-                            backgroundColor: const Color(0xFFFFFFFF),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const HomePage(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "Back",
-                            style: GoogleFonts.poppins(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
                 ],
               ),
             ),

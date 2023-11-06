@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:src/pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -86,37 +88,41 @@ class _SplashScreenState extends State<SplashScreen> {
                   ],
                 ),
               ),
-              _isLoading
-                  ? const CircularProgressIndicator(
-                      color: Colors.white,
-                    )
-                  : ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(345, 50),
-                        backgroundColor: const Color(0xFFFFFFFF),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Let's Go",
-                        style: GoogleFonts.poppins(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
+              _isLoading ? LoadingAnimationWidget.stretchedDots(
+                color: Colors.white,
+                size: 100,
+              ) : ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(345, 50),
+                  backgroundColor: const Color(0xFFFFFFFF),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
                     ),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                        ctx: context,
+                        child: const LoginPage(),
+                        inheritTheme: true,
+                        alignment: Alignment.bottomCenter,
+                        duration: const Duration(milliseconds: 500),
+                        type: PageTransitionType.rightToLeft
+                    ),
+                  );
+                },
+                child: Text(
+                  "Let's Go",
+                  style: GoogleFonts.poppins(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

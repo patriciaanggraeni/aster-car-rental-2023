@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:src/pages/menu_page.dart';
 import 'package:src/pages/profile_page.dart';
 import 'greeting_widget.dart';
@@ -13,24 +14,18 @@ class CustomAppBarWidget extends StatelessWidget
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          children: [
-            Image.asset(
-              "assets/icons/menu.png",
-              color: const Color(0xFF222525),
-              width: 35,
-            ),
-            const SizedBox(
-              width: 15,
-            ),
-            const CustomGreetingWidget(),
-          ],
-        ),
+        const CustomGreetingWidget(),
         InkWell(
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MenuPage()),
+              PageTransition(
+                  ctx: context,
+                  child: const MenuPage(),
+                  inheritTheme: true,
+                  duration: const Duration(milliseconds: 500),
+                  type: PageTransitionType.topToBottom,
+              ),
             );
           },
           child: Image.asset(

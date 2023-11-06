@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:src/models/brand_seeder.dart';
 import 'package:src/models/car_seeder.dart';
 import 'package:src/pages/detail_page.dart';
@@ -54,11 +55,15 @@ class _HomePageState extends State<HomePage> {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DetailPage(car: car),
-                    ),
-                  );
+                     context,
+                     PageTransition(
+                       ctx: context,
+                       child: DetailPage(car: car),
+                       inheritTheme: true,
+                       duration: const Duration(milliseconds: 500),
+                       type: PageTransitionType.fade,
+                     ),
+                   );
                 },
                 child: CustomAvailableCarsWidget(availableCars: _cars),
               )
