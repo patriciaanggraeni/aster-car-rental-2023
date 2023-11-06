@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:src/pages/home_page.dart';
+import 'package:src/widgets/bottom_sheet_widget/failed_bottom_modal_widget.dart';
+import 'package:src/widgets/bottom_sheet_widget/success_bottom_modal_widget.dart';
 
 import '../models/car.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
@@ -32,10 +34,14 @@ class ConfirmPage extends StatelessWidget {
             ButtonBottomWidget(
               name: 'Confirm',
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => const CustomFailedBottomModalWidget(),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
                   ),
                 );
               },
