@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:src/pages/home_page.dart';
 import 'package:src/pages/login_page.dart';
 import 'package:src/pages/menu_page.dart';
+import 'package:src/pages/updateData_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class ProfilePage extends StatelessWidget {
                 size: 25,
               ),
               onPressed: () {
-                 Navigator.push(
+                Navigator.push(
                   context,
                   PageTransition(
                     ctx: context,
@@ -130,7 +131,7 @@ class ProfilePage extends StatelessWidget {
                                 'IDENTITY\n',
                                 style: TextStyle(
                                   fontWeight: FontWeight
-                                      .bold, // Menjadikan teks menjadi bold
+                                      .bold, 
                                 ),
                               ),
                               const Text(
@@ -158,7 +159,12 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    // Tambahkan fungsi update data di sini
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const UpdateDataPage(),
+                                      ),
+                                    );
                                   },
                                   icon: const Icon(Icons.update),
                                   label: Text(
