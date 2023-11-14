@@ -1,4 +1,4 @@
-import 'car.dart';
+import 'package:src/models/car.dart';
 
 class CarSeeder {
   List<Car> getListCar() => [
