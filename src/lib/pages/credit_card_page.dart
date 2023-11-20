@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:src/widgets/detail_page_widget/button_bottom_widget.dart';
 
+import '../widgets/bottom_sheet_widget/failed_bottom_modal_widget.dart';
+
 class CreditCardPage extends StatefulWidget {
   const CreditCardPage({super.key});
 
@@ -22,7 +24,10 @@ class CreditCardPageState extends State<CreditCardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mastercard')),
+      appBar: AppBar(
+        title: const Text('Mastercard'),
+        backgroundColor: const Color(0xFF252525),
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         child: Column(
@@ -32,7 +37,21 @@ class CreditCardPageState extends State<CreditCardPage> {
             priceDetail('Delivery', '\$10.00'),
             priceDetail('Total to pay', '\$55.00', isBold: true),
             const SizedBox(height: 10),
-            const ButtonBottomWidget(name: 'Rent'),
+            ButtonBottomWidget(
+              name: 'Pay Now',
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => const CustomFailedBottomModalWidget(),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

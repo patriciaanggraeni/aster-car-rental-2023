@@ -79,17 +79,26 @@ class _DetailPageState extends State<DetailPage> {
         child: ButtonBottomWidget(
           name: 'Rent',
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ConfirmPage(
-                  car: widget.car,
-                  date: date,
-                  location: location,
-                  paymentMethod: selectedPaymentMethod,
+            if (location.isNotEmpty && date.isNotEmpty) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ConfirmPage(
+                    car: widget.car,
+                    date: date,
+                    location: location,
+                    paymentMethod: selectedPaymentMethod,
+                  ),
                 ),
-              ),
-            );
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  backgroundColor: Color(0XFF222525),
+                  content: Text('Please fill in both the location and date'),
+                ),
+              );
+            }
           },
         ),
       ),
