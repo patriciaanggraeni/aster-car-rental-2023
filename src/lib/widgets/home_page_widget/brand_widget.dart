@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:src/models/brand.dart';
+import 'package:src/pages/list_car_page.dart';
 
 class CustomBrandWidget extends StatelessWidget {
   const CustomBrandWidget({super.key, required this.brands});
@@ -12,39 +14,50 @@ class CustomBrandWidget extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Brand",
-                  style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Brand",
+                style: GoogleFonts.poppins(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
-                Text(
-                  "See more",
-                  style: GoogleFonts.poppins(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 13,
-                  ),
+              ),
+              Text(
+                "See more",
+                style: GoogleFonts.poppins(
+                  color: Colors.black54,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 13,
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 80,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: brands.length,
-                itemBuilder: (context, index) {
-                  Brand brand = brands[index];
-                  return Padding(
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 80,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: brands.length,
+              itemBuilder: (context, index) {
+                Brand brand = brands[index];
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        ctx: context,
+                        child: const ListCarPage(),
+                        inheritTheme: true,
+                        duration: const Duration(milliseconds: 500),
+                        type: PageTransitionType.fade,
+                      ),
+                    );
+                  },
+                  child: Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: SizedBox(
                       width: 80,
@@ -64,12 +77,12 @@ class CustomBrandWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-          ]
-        ),
+          ),
+        ]),
       ),
     );
   }

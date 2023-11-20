@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:src/pages/scan_page.dart';
 
 class VerificationProfilePage extends StatelessWidget {
@@ -78,8 +79,12 @@ class VerificationProfilePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const ScanPage(),
+                    PageTransition(
+                      ctx: context,
+                      child: const ScanPage(),
+                      inheritTheme: true,
+                      duration: const Duration(milliseconds: 500),
+                      type: PageTransitionType.fade,
                     ),
                   );
                 },

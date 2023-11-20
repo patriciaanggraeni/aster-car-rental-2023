@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:src/pages/credit_card_page.dart';
 import 'package:src/pages/home_page.dart';
+
 // import 'package:src/widgets/bottom_sheet_widget/failed_bottom_modal_widget.dart';
 // import 'package:src/widgets/bottom_sheet_widget/success_bottom_modal_widget.dart';
 import 'package:src/pages/verification_profile_page.dart';
 
 import '../models/car.dart';
+import '../widgets/bottom_sheet_widget/failed_bottom_modal_widget.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
 import '../widgets/detail_page_widget/mini_detail_car_widget.dart';
 import 'scan_page.dart';
@@ -35,8 +39,12 @@ class ConfirmPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const VerificationProfilePage(),
+                  PageTransition(
+                    ctx: context,
+                    child: const VerificationProfilePage(),
+                    inheritTheme: true,
+                    duration: const Duration(milliseconds: 500),
+                    type: PageTransitionType.fade,
                   ),
                 );
               },
@@ -44,22 +52,18 @@ class ConfirmPage extends StatelessWidget {
             ButtonBottomWidget(
               name: 'Confirm',
               onPressed: () {
-//                 showModalBottomSheet(
-//                   context: context,
-//                   builder: (context) => const CustomFailedBottomModalWidget(),
-//                   shape: const RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.only(
-//                       topLeft: Radius.circular(20),
-//                       topRight: Radius.circular(20),
-//                     ),
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
+                  PageTransition(
+                    ctx: context,
+                    child: const CreditCardPage(),
+                    inheritTheme: true,
+                    duration: const Duration(milliseconds: 500),
+                    type: PageTransitionType.fade,
                   ),
                 );
               },
-            ),
+            )
           ],
         ),
       ),
