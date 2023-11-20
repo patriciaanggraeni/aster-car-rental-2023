@@ -12,14 +12,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool _isLoading = true;
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
       setState(() {
-        _isLoading = false;
+        isLoading = false;
       });
     });
   }
@@ -88,10 +88,12 @@ class _SplashScreenState extends State<SplashScreen> {
                   ],
                 ),
               ),
-              _isLoading ? LoadingAnimationWidget.stretchedDots(
+              isLoading
+            ? LoadingAnimationWidget.stretchedDots(
                 color: Colors.white,
                 size: 100,
-              ) : ElevatedButton(
+              )
+            : ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(345, 50),
                   backgroundColor: const Color(0xFFFFFFFF),
@@ -110,8 +112,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         inheritTheme: true,
                         alignment: Alignment.bottomCenter,
                         duration: const Duration(milliseconds: 500),
-                        type: PageTransitionType.rightToLeft
-                    ),
+                        type: PageTransitionType.rightToLeft),
                   );
                 },
                 child: Text(
