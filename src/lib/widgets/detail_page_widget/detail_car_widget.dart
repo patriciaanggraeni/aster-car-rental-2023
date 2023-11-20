@@ -105,7 +105,7 @@ class RatingWidget extends StatelessWidget {
                 )
               : const Icon(
                   Icons.star,
-                  color: Colors.black26,
+                  color: Color(0XFF222525),
                   size: 14,
                 ),
       ],

@@ -16,9 +16,7 @@ class ButtonBottomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: const ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(
-          Color.fromRGBO(25, 25, 25, 1),
-        ),
+        backgroundColor: MaterialStatePropertyAll(Color(0XFF222525)),
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.all(

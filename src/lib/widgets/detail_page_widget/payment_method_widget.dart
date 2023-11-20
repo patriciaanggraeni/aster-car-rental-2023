@@ -91,13 +91,11 @@ class PaymentMethodItemWidget extends StatelessWidget {
               Radius.circular(10),
             ),
           ),
-          backgroundColor:
-              isSelected ? const Color.fromRGBO(25, 25, 25, 1) : Colors.white,
+          backgroundColor: isSelected ? const Color(0XFF222525) : Colors.white,
         ),
         child: Image.asset(
           'assets/icons/$icon.png',
-          color:
-              isSelected ? Colors.white : const Color.fromRGBO(25, 25, 25, 1),
+          color: isSelected ? Colors.white : const Color(0XFF222525),
           width: 38,
         ),
       ),

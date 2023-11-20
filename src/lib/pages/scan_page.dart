@@ -80,6 +80,7 @@ class _ScanPageState extends State<ScanPage> {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Scan ID Card'),
+              backgroundColor: const Color(0xFF252525),
             ),
             body: scan(),
           );
