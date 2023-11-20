@@ -28,54 +28,87 @@ class ListCarPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
+                child: ListView.builder(
                   itemCount: cars.length,
                   itemBuilder: (context, index) {
                     final item = cars[index];
                     return InkWell(
                       child: Container(
+                        height: 140,
+                        margin: const EdgeInsets.only(bottom: 10),
                         decoration: const BoxDecoration(
                           color: Color(0xFF222525),
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Stack(
                           children: [
-                            const Text('Available',
-                                style: TextStyle(color: Colors.white)),
-                            Expanded(
-                              child: Image(
-                                image: AssetImage(
-                                  "assets/images/cars/${item.imageCover}",
-                                ),
-                              ),
-                            ),
-                            Text(
-                              item.name,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '\$${item.price.toString()}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                            Positioned(
+                              right: -60,
+                              child: SizedBox(
+                                width: 220,
+                                height: 140,
+                                child: Image(
+                                  image: AssetImage(
+                                    "assets/images/cars/${item.imageCover}",
                                   ),
                                 ),
-                                CustomRatingWidget(availableCar: item),
-                              ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text(
+                                    'Available',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            item.name,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            item.transmissionType,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '\$${item.price.toString()}',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      CustomRatingWidget(availableCar: item),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
