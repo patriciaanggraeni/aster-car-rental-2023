@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:src/bloc/splash_screen_bloc/splash_screen_bloc.dart';
+import 'package:src/bloc/splash_screen_bloc/splash_screen_event.dart';
+import 'package:src/bloc/splash_screen_bloc/splash_screen_state.dart';
 import 'package:src/pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,16 +15,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool isLoading = true;
+  final SplashScreenBloc _splashScreenBloc = SplashScreenBloc();
 
   @override
   void initState() {
+    _splashScreenBloc.add(SetSplashScreenEvent());
     super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
-      setState(() {
-        isLoading = false;
-      });
-    });
   }
 
   @override
