@@ -3,8 +3,8 @@ import "package:google_fonts/google_fonts.dart";
 import "package:page_transition/page_transition.dart";
 import "../../pages/login_page.dart";
 
-class SplashScreenWidget extends StatelessWidget {
-  const SplashScreenWidget({super.key});
+class SplashButtonWidget extends StatelessWidget {
+  const SplashButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

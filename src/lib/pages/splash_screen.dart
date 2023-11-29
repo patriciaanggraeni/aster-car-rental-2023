@@ -7,7 +7,10 @@ import 'package:src/bloc/splash_screen_bloc/splash_screen_bloc.dart';
 import 'package:src/bloc/splash_screen_bloc/splash_screen_event.dart';
 import 'package:src/bloc/splash_screen_bloc/splash_screen_state.dart';
 import 'package:src/pages/login_page.dart';
+import 'package:src/widgets/splash_screen_widget/splash_loading_widget.dart';
 import 'package:src/widgets/splash_screen_widget/splash_logo_wiget.dart';
+import 'package:src/widgets/splash_screen_widget/splash_rich_text_widget.dart';
+import 'package:src/widgets/splash_screen_widget/splash_text_logo_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
