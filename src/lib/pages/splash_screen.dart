@@ -36,13 +36,6 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Image(
-                image: AssetImage("assets/images/splash_screen/logo.png"),
-                fit: BoxFit.cover,
-                isAntiAlias: true,
-                width: 375,
-                height: 375,
-              ),
               RichText(
                 text: TextSpan(
                   children: [
