@@ -1,3 +1,3 @@
-abstract class SplashScreenEvent {}
+abstract class SplashEvent {}
 
-class SetSplashScreenEvent extends SplashScreenEvent {}
+class SetSplashEvent extends SplashEvent {}

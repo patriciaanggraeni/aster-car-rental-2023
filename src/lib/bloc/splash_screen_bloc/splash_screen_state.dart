@@ -1,7 +1,7 @@
-abstract class SplashScreenState {}
+abstract class SplashState {}
 
-class InitialSplashScreenState extends SplashScreenState {}
+class SplashInitialState extends SplashState {}
 
-class LoadingSplashScreenState extends SplashScreenState {}
+class SplashLoadingState extends SplashState {}
 
-class LoadedSplashScreenState extends SplashScreenState {}
+class SplashLoadedState extends SplashState {}

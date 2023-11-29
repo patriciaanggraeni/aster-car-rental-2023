@@ -16,11 +16,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final SplashScreenBloc _splashScreenBloc = SplashScreenBloc();
+  final SplashBloc _splashScreenBloc = SplashBloc();
 
   @override
   void initState() {
-    _splashScreenBloc.add(SetSplashScreenEvent());
+    _splashScreenBloc.add(SetSplashEvent());
     super.initState();
   }
 
@@ -36,12 +36,13 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              BlocBuilder<SplashScreenBloc, SplashScreenState>(
+              BlocBuilder<SplashBloc, SplashState>(
                 bloc: _splashScreenBloc,
                 builder: (context, state) {
-                  if (state is LoadingSplashScreenState) {
 
-                  } else if (state is LoadedSplashScreenState) {
+                  if (state is SplashLoadingState) {
+
+                  } else if (state is SplashLoadedState) {
 
                   } else {
                     return const SizedBox();
