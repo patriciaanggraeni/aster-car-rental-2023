@@ -36,44 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Dream ',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Cars, ',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 20,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Real ',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Journeys',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
               BlocBuilder<SplashScreenBloc, SplashScreenState>(
                 bloc: _splashScreenBloc,
                 builder: (context, state) {
