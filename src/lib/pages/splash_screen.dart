@@ -7,6 +7,7 @@ import 'package:src/bloc/splash_screen_bloc/splash_screen_bloc.dart';
 import 'package:src/bloc/splash_screen_bloc/splash_screen_event.dart';
 import 'package:src/bloc/splash_screen_bloc/splash_screen_state.dart';
 import 'package:src/pages/login_page.dart';
+import 'package:src/widgets/splash_screen_widget/splash_button_widget.dart';
 import 'package:src/widgets/splash_screen_widget/splash_loading_widget.dart';
 import 'package:src/widgets/splash_screen_widget/splash_logo_wiget.dart';
 import 'package:src/widgets/splash_screen_widget/splash_rich_text_widget.dart';
@@ -40,13 +41,16 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SplashLogoWidget(),
+              const SplashTextLogoWidget(),
+              const SplashRichTextWidget(),
               BlocBuilder<SplashBloc, SplashState>(
                 bloc: _splashScreenBloc,
                 builder: (context, state) {
                   if (state is SplashLoadingState) {
-
+                    return const SplashLoadingWidget();
                   } else if (state is SplashLoadedState) {
-
+                    return const SplashButtonWidget();
                   } else {
                     return const SizedBox();
                   }
