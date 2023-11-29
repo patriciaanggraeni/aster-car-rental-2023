@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-class SplashRichTextWidget extends StatelessWidget {
-  const SplashRichTextWidget({super.key});
+class SplashTextLogoWidget extends StatelessWidget {
+  const SplashTextLogoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
