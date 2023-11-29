@@ -36,15 +36,11 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
               BlocBuilder<SplashScreenBloc, SplashScreenState>(
                 bloc: _splashScreenBloc,
                 builder: (context, state) {
                   if (state is LoadingSplashScreenState) {
-                    return LoadingAnimationWidget.stretchedDots(
-                      color: Colors.white,
-                      size: 100,
-                    );
+
                   } else if (state is LoadedSplashScreenState) {
                     return ElevatedButton(
                       style: ElevatedButton.styleFrom(
