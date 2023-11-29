@@ -41,8 +41,8 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SplashLogoWidget(),
               const SplashTextLogoWidget(),
+              const SplashLogoWidget(),
               const SplashRichTextWidget(),
               BlocBuilder<SplashBloc, SplashState>(
                 bloc: _splashScreenBloc,
