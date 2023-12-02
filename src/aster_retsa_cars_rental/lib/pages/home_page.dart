@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 },
-                child: CustomAvailableCarsWidget(availableCars: _cars),
+                child: car.available ? CustomAvailableCarsWidget(availableCars: _cars) : const SizedBox(),
               )
             ],
           );
