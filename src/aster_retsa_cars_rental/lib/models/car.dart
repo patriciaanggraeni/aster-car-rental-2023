@@ -1,6 +1,7 @@
 class Car {
   final String name, type, description, transmissionType, color, imageCover;
   final double price, rating;
+  final bool available;
   final int maxSpeed, fuelCapacity;
   final int doorCount, seatCount;
   final List<String> photos;
@@ -8,6 +9,7 @@ class Car {
   Car({
     required this.name,
     required this.type,
+    required this.available,
     required this.description,
     required this.transmissionType,
     required this.color,
