@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "120418240174",
+    "project_id": "aster-resta-cars-rental",
+    "storage_bucket": "aster-resta-cars-rental.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120418240174:android:357858ee2df70837290f3f",
+        "android_client_info": {
+          "package_name": "com.example.aster_retsa_cars_rental"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRJmh02P04tCj1U7EjE_rQ_4m1nqYPHCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
