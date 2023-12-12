@@ -20,4 +20,22 @@ class Car {
     required this.rating,
     required this.photos,
   });
+
+  factory Car.fromMap(Map<String, dynamic> data) {
+    return Car(
+      name: data['name'],
+      type: data['type'],
+      description: data['description'],
+      transmissionType: data['transmissionType'],
+      color: data['color'],
+      imageCover: data['imageCover'],
+      price: data['price'].toDouble(),
+      maxSpeed: data['maxSpeed'],
+      fuelCapacity: data['fuelCapacity'],
+      doorCount: data['doorCount'],
+      seatCount: data['seatCount'],
+      rating: data['rating'].toDouble(),
+      photos: List<String>.from(data['photos'] ?? []),
+    );
+  }
 }
