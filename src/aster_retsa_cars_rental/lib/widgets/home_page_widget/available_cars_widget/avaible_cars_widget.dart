@@ -8,7 +8,7 @@ import 'name_widget.dart';
 
 class CustomAvailableCarsWidget extends StatelessWidget {
   const CustomAvailableCarsWidget({super.key, required this.availableCars});
-  final List availableCars;
+  final List<Car> availableCars;
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +53,8 @@ class CustomAvailableCarsWidget extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Image(
-                                        image: AssetImage(
-                                          "assets/images/cars/${availableCar.imageCover}"
-                                        ),
+                                      Image.network(
+                                        availableCar.imageCover
                                       ),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
