@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../models/car.dart';
 
 class CustomOfferWidget extends StatelessWidget {
-  const CustomOfferWidget({super.key, required this.cars});
-  final List<Car> cars;
+  const CustomOfferWidget({super.key, required this.car});
+  final Car car;
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +56,9 @@ class CustomOfferWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Image.asset("assets/images/cars/${cars[1].imageCover}"),
+                    Image.network(car.imageCover),
                     Text(
-                      cars[1].name,
+                      car.name,
                       style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontWeight: FontWeight.normal,
