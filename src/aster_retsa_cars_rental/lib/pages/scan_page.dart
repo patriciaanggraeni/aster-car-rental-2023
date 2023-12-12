@@ -14,12 +14,12 @@ class _ScanPageState extends State<ScanPage> {
   late CameraController cameraController;
   late Future<void> initializeControllerFuture;
 
-  int selectedCamera = 1;
+  int _selectedCamera = 1;
 
   @override
   void initState() {
     super.initState();
-    initializeControllerFuture = startCamera(selectedCamera);
+    initializeControllerFuture = startCamera(_selectedCamera);
   }
 
   Future<void> startCamera(int direction) async {
@@ -40,6 +40,23 @@ class _ScanPageState extends State<ScanPage> {
   void dispose() {
     cameraController.dispose();
     super.dispose();
+  }
+
+  Future<XFile?> _takePicture() async {
+    if (!cameraController.value.isInitialized ||
+        cameraController.value.isTakingPicture) {
+      return null;
+    }
+
+    try {
+      await cameraController.setFlashMode(FlashMode.off);
+      XFile picture = await cameraController.takePicture();
+      print('take picture');
+      return picture;
+    } catch (e) {
+      print('e');
+      return null;
+    }
   }
 
   void _setFlashMode() {
@@ -66,8 +83,8 @@ class _ScanPageState extends State<ScanPage> {
 
   void _switchCamera() {
     setState(() {
-      selectedCamera = selectedCamera == 0 ? 1 : 0;
-      initializeControllerFuture = startCamera(selectedCamera);
+      _selectedCamera = _selectedCamera == 0 ? 1 : 0;
+      initializeControllerFuture = startCamera(_selectedCamera);
     });
   }
 
@@ -132,9 +149,13 @@ class _ScanPageState extends State<ScanPage> {
                   size: 27,
                   onTap: _setFlashMode,
                 ),
-                cameraButton(icon: Icons.camera_rounded, size: 42),
                 cameraButton(
-                  icon: selectedCamera == 0
+                  icon: Icons.camera_rounded,
+                  size: 42,
+                  onTap: _takePicture,
+                ),
+                cameraButton(
+                  icon: _selectedCamera == 0
                       ? Icons.camera_rear
                       : Icons.camera_front,
                   size: 27,
