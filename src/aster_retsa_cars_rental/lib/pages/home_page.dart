@@ -1,9 +1,13 @@
+import 'package:aster_retsa_cars_rental/bloc/brand_bloc/brand_event.dart';
+import 'package:aster_retsa_cars_rental/bloc/brand_bloc/brand_state.dart';
 import 'package:aster_retsa_cars_rental/bloc/car_bloc/car_bloc.dart';
 import 'package:aster_retsa_cars_rental/bloc/car_bloc/car_event.dart';
 import 'package:aster_retsa_cars_rental/bloc/car_bloc/car_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import '../bloc/brand_bloc/brand_bloc.dart';
+import '../models/brand.dart';
 import '../models/car.dart';
 import '../seeder/brand_seeder.dart';
 import '../seeder/car_seeder.dart';
@@ -23,12 +27,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _brands = BrandSeeder().getListBrand();
+  final BrandBloc _brandBloc = BrandBloc();
   final CarBloc _carBloc = CarBloc();
 
   @override
   void initState() {
     _carBloc.add(FetchCarsEvent());
+    _brandBloc.add(FetchBrandEvent());
     super.initState();
   }
 
@@ -67,7 +72,28 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       CustomOfferWidget(car: car),
-                      CustomBrandWidget(brands: _brands),
+                      BlocBuilder<BrandBloc, BrandState>(
+                          builder: (context, state) {
+                            if (state is LoadedBandState) {
+                              List<Brand> brands = state.brands;
+                              return ListView.builder(
+                                itemCount: 1,
+                                itemBuilder: (context, index) {
+                                  Brand brand = brands[index];
+                                  return CustomBrandWidget(brand: brand);
+                                }
+                              );
+                            } else if (state is ErrorBrandState) {
+                              return Center(
+                                child: Text('Error: ${state.error}'),
+                              );
+                            } else {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                          }
+                      ),
                       InkWell(
                         onTap: () {
                           Navigator.push(
