@@ -3,6 +3,7 @@ import '../models/car.dart';
 class CarSeeder {
   List<Car> getListCar() => [
         Car(
+          available: true,
           name: "Innova Zenix 2023",
           price: 400,
           type: "V Hybrid",
@@ -23,6 +24,7 @@ class CarSeeder {
           ],
         ),
         Car(
+          available: true,
           name: "Lamborgini Centenario",
           price: 400,
           type: "ZF 8-speed",
@@ -43,6 +45,7 @@ class CarSeeder {
           ],
         ),
         Car(
+          available: true,
           name: "Hummer H3",
           price: 700,
           type: "Hydra Matic",
@@ -63,6 +66,7 @@ class CarSeeder {
           ],
         ),
         Car(
+          available: true,
           name: "Aston Martin V12",
           price: 900,
           type: "V12 Vantage",
