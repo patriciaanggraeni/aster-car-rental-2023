@@ -21,20 +21,4 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       }
     } );
   }
-
-  // CarState get initialState => InitialCarState();
-
-  // Stream<CarState> mapEventToState(CarEvent event) async* {
-  //   if (event is FetchCarsEvent) {
-  //     try {
-  //       QuerySnapshot querySnapshot = await _firebaseFirestore.collection('car').get();
-  //       List<Car> cars = querySnapshot.docs.map( (DocumentSnapshot documentSnapshot) =>
-  //         Car.fromMap(documentSnapshot.data() as Map<String, dynamic>)
-  //       ).toList();
-  //       yield LoadedCarState(cars);
-  //     } catch (e) {
-  //       yield ErrorCarState(e.toString());
-  //     }
-  //   }
-  // }
 }
