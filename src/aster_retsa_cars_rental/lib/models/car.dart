@@ -1,4 +1,5 @@
 class Car {
+  final bool available;
   final String name, type, description, transmissionType, color, imageCover;
   final double price, rating;
   final int maxSpeed, fuelCapacity;
@@ -6,6 +7,7 @@ class Car {
   final List<String> photos;
 
   Car({
+    required this.available,
     required this.name,
     required this.type,
     required this.description,
@@ -23,18 +25,19 @@ class Car {
 
   factory Car.fromMap(Map<String, dynamic> data) {
     return Car(
-      name: data['name'],
-      type: data['type'],
-      description: data['description'],
-      transmissionType: data['transmissionType'],
-      color: data['color'],
-      imageCover: data['imageCover'],
-      price: data['price'].toDouble(),
-      maxSpeed: data['maxSpeed'],
-      fuelCapacity: data['fuelCapacity'],
-      doorCount: data['doorCount'],
-      seatCount: data['seatCount'],
-      rating: data['rating'].toDouble(),
+      available: data['available'] ?? "Gagal mengambil available",
+      name: data['name'] ?? "Gagal mengambil nama",
+      type: data['type'] ?? "Gagal mengambil type",
+      description: data['description'] ?? "Gagal mengambil deskripsi",
+      transmissionType: data['transmissionType'] ?? "Gagal mengambil transmissionType",
+      color: data['color'] ?? "Gagal mengambil color",
+      imageCover: data['imageCover'] ?? "Gagal mengambil imageCover",
+      price: data['price'].toDouble() ?? 0,
+      maxSpeed: data['maxSpeed'] ?? 0,
+      fuelCapacity: data['fuelCapacity'] ?? 0,
+      doorCount: data['doorCount'] ?? 0,
+      seatCount: data['seatCount'] ?? 0,
+      rating: data['rating'].toDouble() ?? 0,
       photos: List<String>.from(data['photos'] ?? []),
     );
   }
