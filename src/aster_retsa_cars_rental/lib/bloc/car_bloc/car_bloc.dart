@@ -8,20 +8,33 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CarBloc extends Bloc<CarEvent, CarState> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  CarBloc(super.initialState);
-  CarState get initialState => InitialCarState();
-
-  Stream<CarState> mapEventToState(CarEvent event) async* {
-    if (event is FetchCarsEvent) {
+  CarBloc() : super(InitialCarState()) {
+    on<FetchCarsEvent>( (event, emit) async {
       try {
         QuerySnapshot querySnapshot = await _firebaseFirestore.collection('car').get();
         List<Car> cars = querySnapshot.docs.map( (DocumentSnapshot documentSnapshot) =>
           Car.fromMap(documentSnapshot.data() as Map<String, dynamic>)
         ).toList();
-        yield LoadedCarState(cars);
+        emit(LoadedCarState(cars));
       } catch (e) {
-        yield ErrorCarState(e.toString());
+        emit(ErrorCarState(e.toString()));
       }
-    }
+    } );
   }
+
+  // CarState get initialState => InitialCarState();
+
+  // Stream<CarState> mapEventToState(CarEvent event) async* {
+  //   if (event is FetchCarsEvent) {
+  //     try {
+  //       QuerySnapshot querySnapshot = await _firebaseFirestore.collection('car').get();
+  //       List<Car> cars = querySnapshot.docs.map( (DocumentSnapshot documentSnapshot) =>
+  //         Car.fromMap(documentSnapshot.data() as Map<String, dynamic>)
+  //       ).toList();
+  //       yield LoadedCarState(cars);
+  //     } catch (e) {
+  //       yield ErrorCarState(e.toString());
+  //     }
+  //   }
+  // }
 }
