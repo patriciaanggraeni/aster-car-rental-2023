@@ -34,7 +34,7 @@ class MenuPage extends StatelessWidget {
                   context,
                   PageTransition(
                     ctx: context,
-                    child: const HomePage(),
+                    child: HomePage(),
                     inheritTheme: true,
                     duration: const Duration(milliseconds: 500),
                     type: PageTransitionType.bottomToTop,
