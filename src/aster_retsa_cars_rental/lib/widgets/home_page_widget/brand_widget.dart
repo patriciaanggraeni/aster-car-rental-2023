@@ -5,8 +5,8 @@ import '../../models/brand.dart';
 import '../../pages/list_car_page.dart';
 
 class CustomBrandWidget extends StatelessWidget {
-  const CustomBrandWidget({super.key, required this.brands});
-  final List<Brand> brands;
+  const CustomBrandWidget({super.key, required this.brand});
+  final Brand brand;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,49 @@ class CustomBrandWidget extends StatelessWidget {
                   fontSize: 13,
                 ),
               ),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        ctx: context,
+                        child: const ListCarPage(),
+                        inheritTheme: true,
+                        duration: const Duration(milliseconds: 500),
+                        type: PageTransitionType.fade,
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: Card(
+                        shape: const RoundedRectangleBorder(
+                          side: BorderSide(color: Color(0xFF222525)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Image.network(brand.image),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
-          SizedBox(
+        ]),
+      ),
+    );
+  }
+}
+
+/**
+ * SizedBox(
             height: 80,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -82,8 +122,4 @@ class CustomBrandWidget extends StatelessWidget {
               },
             ),
           ),
-        ]),
-      ),
-    );
-  }
-}
+ */
