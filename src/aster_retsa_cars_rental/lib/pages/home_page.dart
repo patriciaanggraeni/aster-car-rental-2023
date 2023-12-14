@@ -27,13 +27,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final BrandBloc _brandBloc = BrandBloc();
   final CarBloc _carBloc = CarBloc();
 
   @override
   void initState() {
     _carBloc.add(FetchCarsEvent());
-    _brandBloc.add(FetchBrandEvent());
     super.initState();
   }
 
@@ -72,28 +70,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       CustomOfferWidget(car: car),
-                      BlocBuilder<BrandBloc, BrandState>(
-                          builder: (context, state) {
-                            if (state is LoadedBandState) {
-                              List<Brand> brands = state.brands;
-                              return ListView.builder(
-                                itemCount: 1,
-                                itemBuilder: (context, index) {
-                                  Brand brand = brands[index];
-                                  return CustomBrandWidget(brand: brand);
-                                }
-                              );
-                            } else if (state is ErrorBrandState) {
-                              return Center(
-                                child: Text('Error: ${state.error}'),
-                              );
-                            } else {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                          }
-                      ),
+                      CustomBrandWidget(),
                       InkWell(
                         onTap: () {
                           Navigator.push(
