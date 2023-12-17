@@ -2,15 +2,10 @@ import 'package:aster_retsa_cars_rental/pages/verification_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-// import 'package:src/widgets/bottom_sheet_widget/failed_bottom_modal_widget.dart';
-// import 'package:src/widgets/bottom_sheet_widget/success_bottom_modal_widget.dart';
-
 import '../models/car.dart';
-import '../widgets/bottom_sheet_widget/failed_bottom_modal_widget.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
 import '../widgets/detail_page_widget/mini_detail_car_widget.dart';
 import 'credit_card_page.dart';
-import 'scan_page.dart';
 
 class ConfirmPage extends StatelessWidget {
   const ConfirmPage({

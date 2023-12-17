@@ -1,9 +1,55 @@
-import 'package:aster_retsa_cars_rental/pages/scan_page.dart';
+import 'package:aster_retsa_cars_rental/pages/result_scan_page.dart';
+import 'package:edge_detection/edge_detection.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class VerificationProfilePage extends StatelessWidget {
+class VerificationProfilePage extends StatefulWidget {
   const VerificationProfilePage({super.key});
+
+  @override
+  State<VerificationProfilePage> createState() =>
+      _VerificationProfilePageState();
+}
+
+class _VerificationProfilePageState extends State<VerificationProfilePage> {
+  String? _imagePath;
+
+  Future<void> getImageFromCamera() async {
+    bool isCameraGranted = await Permission.camera.request().isGranted;
+    if (!isCameraGranted) {
+      isCameraGranted =
+          await Permission.camera.request() == PermissionStatus.granted;
+    }
+
+    if (!isCameraGranted) {
+      return;
+    }
+
+    String imagePath = join((await getApplicationSupportDirectory()).path,
+        "${(DateTime.now().millisecondsSinceEpoch / 1000).round()}.jpeg");
+
+    bool success = false;
+
+    success = await EdgeDetection.detectEdge(
+      imagePath,
+      androidScanTitle: 'Scanning',
+      androidCropTitle: 'Crop',
+      androidCropBlackWhiteTitle: 'Grayscale',
+      androidCropReset: 'Reset',
+      canUseGallery: false,
+    );
+
+    if (!mounted) return;
+
+    setState(() {
+      if (success) {
+        _imagePath = imagePath;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,16 +123,20 @@ class VerificationProfilePage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      ctx: context,
-                      child: const ScanPage(),
-                      inheritTheme: true,
-                      duration: const Duration(milliseconds: 500),
-                      type: PageTransitionType.fade,
-                    ),
-                  );
+                  getImageFromCamera().whenComplete(() {
+                    if (_imagePath != null) {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          ctx: context,
+                          child: ResultScanPage(picture: _imagePath!),
+                          inheritTheme: true,
+                          duration: const Duration(milliseconds: 500),
+                          type: PageTransitionType.fade,
+                        ),
+                      );
+                    }
+                  });
                 },
                 child: Container(
                   height: 37,

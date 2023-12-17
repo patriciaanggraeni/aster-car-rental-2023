@@ -1,9 +1,7 @@
 import 'package:aster_retsa_cars_rental/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
+main() async {
   runApp(const MyApp());
 }
 
