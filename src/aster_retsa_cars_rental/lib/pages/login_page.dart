@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
-                child: const ButtonFront(
+                child: ButtonFront(
                   theText: 'Login',
                   toPage: HomePage(),
                 ),

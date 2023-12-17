@@ -19,7 +19,7 @@ class _CarouselWithIndicatorState extends State<ImageSliderWidget> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> sliders = widget.images
-        .map((item) => Image.asset('assets/images/$item'))
+        .map((image) => Image.network(image))
         .toList();
 
     return Column(
