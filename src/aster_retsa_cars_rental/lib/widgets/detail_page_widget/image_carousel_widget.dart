@@ -18,9 +18,8 @@ class _CarouselWithIndicatorState extends State<ImageSliderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> sliders = widget.images
-        .map((image) => Image.network(image))
-        .toList();
+    final List<Widget> sliders =
+        widget.images.map((image) => Image.network(image)).toList();
 
     return Column(
       children: [
@@ -57,18 +56,19 @@ class _CarouselWithIndicatorState extends State<ImageSliderWidget> {
                     right: 6,
                   ),
                   decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 1.2,
-                      ),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                      color: (Theme.of(context).brightness == Brightness.dark
-                              ? const Color.fromRGBO(25, 25, 25, 1)
-                              : Colors.white)
-                          .withOpacity(_current == entry.key ? 1 : 0)),
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1.2,
+                    ),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    color: (Theme.of(context).brightness == Brightness.dark
+                            ? const Color.fromRGBO(25, 25, 25, 1)
+                            : Colors.white)
+                        .withOpacity(_current == entry.key ? 1 : 0),
+                  ),
                 ),
               );
             },

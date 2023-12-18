@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../models/car.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
@@ -30,11 +31,20 @@ class _DetailPageState extends State<DetailPage> {
   List<String> paymentMethods = ['Cash', 'Mastercard', 'Visa', 'Paypal'];
   String selectedPaymentMethod = 'Cash';
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void _inputLocation(BuildContext context) async {
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => InputLocationWidget(location: location),
+      PageTransition(
+        ctx: context,
+        child: InputLocationWidget(location: location),
+        inheritTheme: true,
+        duration: const Duration(milliseconds: 500),
+        type: PageTransitionType.fade,
       ),
     );
     setState(() {
