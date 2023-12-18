@@ -1,3 +1,4 @@
+import 'package:aster_retsa_cars_rental/pages/home_page.dart';
 import 'package:aster_retsa_cars_rental/pages/verification_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -50,7 +51,7 @@ class ConfirmPage extends StatelessWidget {
                   context,
                   PageTransition(
                     ctx: context,
-                    child: const CreditCardPage(),
+                    child: const HomePage(),
                     inheritTheme: true,
                     duration: const Duration(milliseconds: 500),
                     type: PageTransitionType.fade,
@@ -67,7 +68,7 @@ class ConfirmPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset('assets/images/${car.photos[0]}'),
+              Image.network(car.imageCover),
               const SizedBox(height: 12),
               const Text(
                 'We need to complete the process, please scan your ID Card.',

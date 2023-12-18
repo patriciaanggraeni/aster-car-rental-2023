@@ -21,57 +21,53 @@ class PickupLocationWidget extends StatelessWidget {
         const SizedBox(
           height: 6,
         ),
-        Hero(
-          tag: 'location',
-          child: ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all(const Color(0XFF222525)),
-              padding: MaterialStateProperty.all(
-                  const EdgeInsets.symmetric(horizontal: 9)),
-              shape: MaterialStateProperty.all(
-                const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(const Color(0XFF222525)),
+            padding: MaterialStateProperty.all(
+                const EdgeInsets.symmetric(horizontal: 9)),
+            shape: MaterialStateProperty.all(
+              const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
                 ),
               ),
-              elevation: MaterialStateProperty.all(0),
             ),
-            onPressed: onPressed,
-            child: SizedBox(
-              height: 37,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.my_location_outlined,
-                        size: 24,
-                        color: Colors.white,
-                      ),
-                      const SizedBox(width: 4),
-                      SizedBox(
-                        width: 264,
-                        child: Text(
-                          location == '' ? 'Enter Location' : location,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
+            elevation: MaterialStateProperty.all(0),
+          ),
+          onPressed: onPressed,
+          child: SizedBox(
+            height: 37,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.my_location_outlined,
+                      size: 24,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: 4),
+                    SizedBox(
+                      width: 264,
+                      child: Text(
+                        location == '' ? 'Enter Location' : location,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
                         ),
                       ),
-                    ],
-                  ),
-                  const Icon(
-                    Icons.keyboard_arrow_down_outlined,
-                    size: 24,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                const Icon(
+                  Icons.keyboard_arrow_down_outlined,
+                  size: 24,
+                  color: Colors.white,
+                ),
+              ],
             ),
           ),
         ),

@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:aster_retsa_cars_rental/constants/constants.dart';
+import 'package:aster_retsa_cars_rental/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ResultScanPage extends StatefulWidget {
   const ResultScanPage({
@@ -17,9 +20,6 @@ class ResultScanPage extends StatefulWidget {
 }
 
 class _ResultScanPageState extends State<ResultScanPage> {
-  String nikPattern =
-      r"((1[1-9])|(21)|([37][1-6])|(5[1-4])|(6[1-5])|([8-9][1-2]))[0-9]{2}[0-9]{2}(([0-6][0-9])|(7[0-1]))((0[1-9])|(1[0-2]))([0-9]{2})[0-9]{4}";
-
   bool _success = false;
   late Future<String?> _nikDetect;
 
@@ -136,17 +136,34 @@ class _ResultScanPageState extends State<ResultScanPage> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_success) {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            ctx: context,
+                            child: const HomePage(),
+                            inheritTheme: true,
+                            duration: const Duration(milliseconds: 500),
+                            type: PageTransitionType.fade,
+                          ),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                      }
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          "assets/icons/retry.png",
+                          _success
+                              ? "assets/icons/home.png"
+                              : "assets/icons/retry.png",
                           width: 20,
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          "Scan Again",
+                          _success ? "Go to Home" : "Scan Again",
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
