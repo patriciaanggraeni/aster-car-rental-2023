@@ -14,7 +14,7 @@ class RegisterButton extends StatelessWidget {
         context,
         PageTransition(
            ctx: context,
-           child: const RegisterPage(),
+           child: RegisterPage(),
            inheritTheme: true,
            alignment: Alignment.bottomCenter,
            duration: const Duration(milliseconds: 500),

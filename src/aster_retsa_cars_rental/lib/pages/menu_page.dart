@@ -1,4 +1,5 @@
 import 'package:aster_retsa_cars_rental/pages/profile_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -10,7 +11,13 @@ import 'login_page.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
-
+  void signUserOut(BuildContext context) {
+    FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,10 +113,10 @@ class MenuPage extends StatelessWidget {
               icon: Icons.info_outline,
               toPage: About(),
             ),
-            const ItemMenuWidget(
+            LogoutButton(
               name: 'Logout',
               icon: Icons.logout,
-              toPage: LoginPage(),
+              onTap: () => signUserOut(context),
             ),
           ],
         ),
@@ -145,6 +152,60 @@ class ItemMenuWidget extends StatelessWidget {
           ),
         );
       },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 18),
+        decoration: const BoxDecoration(
+          border: BorderDirectional(
+            bottom: BorderSide(color: Colors.black12),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  icon,
+                  size: 28,
+                  color: const Color(0xFF222525),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const Icon(
+              Icons.arrow_forward_ios_outlined,
+              size: 16,
+              color: Color(0xFF222525),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LogoutButton extends StatelessWidget {
+  const LogoutButton(
+      {super.key,
+      required this.name,
+      required this.icon,
+      required this.onTap,
+      });
+
+  final String name;
+  final IconData icon;
+  final Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 18),
         decoration: const BoxDecoration(

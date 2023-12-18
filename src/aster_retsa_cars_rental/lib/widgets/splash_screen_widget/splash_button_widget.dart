@@ -1,3 +1,4 @@
+import "package:aster_retsa_cars_rental/pages/auth_page.dart";
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:page_transition/page_transition.dart";
@@ -23,7 +24,7 @@ class SplashButtonWidget extends StatelessWidget {
           context,
           PageTransition(
               ctx: context,
-              child: const LoginPage(),
+              child: AuthPage(),
               inheritTheme: true,
               alignment: Alignment.bottomCenter,
               duration: const Duration(milliseconds: 500),

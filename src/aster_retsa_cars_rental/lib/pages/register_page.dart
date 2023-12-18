@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/auth_page_widget/button_front_widget.dart';
 import '../widgets/auth_page_widget/custom_field_widget.dart';
@@ -6,8 +7,16 @@ import '../widgets/auth_page_widget/upper_logo_widget.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterPage({super.key});
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text, 
+      password: passwordController.text,
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,23 +52,29 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: const Column(
+                child: Column(
                   children: [
                     CustomField(
+                      controller: emailController,
                       hintText: 'Email',
                       obsecure: false,
                     ),
-                    SizedBox(height: 10),
-                    CustomField(hintText: 'Password', obsecure: true),
+                    const SizedBox(height: 10),
+                    CustomField(
+                      controller: passwordController,
+                      hintText: 'Password', 
+                      obsecure: true
+                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
-                child: const ButtonFront(
+                child: ButtonFront(
+                  onTap: signUserIn,
                   theText: 'Register',
-                  toPage: LoginPage(),
+                  //toPage: LoginPage(),
                 ),
               ),
               const SizedBox(height: 100),

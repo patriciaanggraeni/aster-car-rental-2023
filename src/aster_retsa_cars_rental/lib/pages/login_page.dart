@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/auth_page_widget/button_front_widget.dart';
 import '../widgets/auth_page_widget/custom_field_widget.dart';
@@ -7,7 +8,18 @@ import '../widgets/auth_page_widget/upper_logo_widget.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  // text editing controllers
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text, 
+      password: passwordController.text,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,23 +56,30 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: const Column(
+                child: Column(
                   children: [
                     CustomField(
-                      hintText: 'Username',
+                      controller: emailController,
+                      hintText: 'Email',
                       obsecure: false,
                     ),
-                    SizedBox(height: 10),
-                    CustomField(hintText: 'Password', obsecure: true),
+                    const SizedBox(height: 10),
+                    CustomField(
+                      controller: passwordController,
+                      hintText: 'Password', 
+                      obsecure: true
+                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 10),
+              // LOGIN BUTTON
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: ButtonFront(
+                  onTap: signUserIn,
                   theText: 'Login',
-                  toPage: HomePage(),
+                  //toPage: HomePage(),
                 ),
               ),
               const SizedBox(height: 5),
