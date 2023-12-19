@@ -1,5 +1,6 @@
 import 'package:aster_retsa_cars_rental/pages/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../widgets/auth_page_widget/button_front_widget.dart';
 import '../widgets/auth_page_widget/custom_field_widget.dart';
@@ -17,55 +18,70 @@ class _LoginPageState extends State<LoginPage> {
   // text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? _user;
+  
   void signUserIn(BuildContext context) async {
-  showDialog(
-    context: context,
-    builder: (context) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    },
-  );
-  try {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
-    Navigator.pop(context);
-  } on FirebaseAuthException catch (e) {
-    Navigator.pop(context);
-    if (e.code == 'user-not-found') {
-      wrongEmailMessage(context);
-    } else if (e.code == 'wrong-password') {
-      wrongPassMessage(context);
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      if (e.code == 'user-not-found') {
+        wrongEmailMessage(context);
+      } else if (e.code == 'wrong-password') {
+        wrongPassMessage(context);
+      }
     }
   }
-}
-
-void wrongEmailMessage(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Incorrect Email'),
-      );
-    },
-  );
-}
-
-void wrongPassMessage(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Incorrect Password'),
-      );
-    },
-  );
-}
-
-
+  void wrongEmailMessage(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Incorrect Email'),
+        );
+      },
+    );
+  }
+  void wrongPassMessage(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Incorrect Password'),
+        );
+      },
+    );
+  }
+  void _handleGoogleSignIn(){
+    try {
+      GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(googleAuthProvider);
+    } catch (error) {
+      print(error);
+    }
+  }
+  @override
+  void initState(){
+    super.initState();
+    _auth.authStateChanges().listen((event){
+      setState(() {
+        _user = event;
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,7 +178,9 @@ void wrongPassMessage(BuildContext context) {
                         textColor: Colors.white
                       ),
                       const SizedBox(height: 30),
-                      const GoogleSignUp(),
+                      GoogleSignUp(
+                        onPressed: _handleGoogleSignIn,
+                      ),
                     ],
                   )
               ),
