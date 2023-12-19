@@ -10,13 +10,16 @@ import 'home_page.dart';
 import 'login_page.dart';
 
 class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
-  void signUserOut(BuildContext context) {
-    FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
+  MenuPage({super.key});
+  User user = FirebaseAuth.instance.currentUser!;
+  void signUserOut(BuildContext context) async{
+    if (user != null){
+      await FirebaseAuth.instance.signOut();
+      Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginPage()),
     );
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -82,12 +85,12 @@ class MenuPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Username',
+                          user.email!,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

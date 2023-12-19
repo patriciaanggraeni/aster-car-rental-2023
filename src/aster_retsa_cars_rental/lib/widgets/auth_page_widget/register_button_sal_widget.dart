@@ -3,8 +3,10 @@ import 'package:page_transition/page_transition.dart';
 import '../../pages/register_page.dart';
 
 class RegisterButton extends StatelessWidget {
+  final String theText;
   const RegisterButton({
     super.key,
+    required this.theText,
   });
 
   @override
@@ -38,11 +40,12 @@ class RegisterButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.symmetric(horizontal: 0),
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Register',
-                style: TextStyle(
+            Text(
+              theText,
+                style: const TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 18,
                   fontWeight: FontWeight.w500,

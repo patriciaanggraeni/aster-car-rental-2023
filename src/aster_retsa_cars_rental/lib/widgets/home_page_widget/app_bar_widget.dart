@@ -20,7 +20,7 @@ class CustomAppBarWidget extends StatelessWidget
               context,
               PageTransition(
                   ctx: context,
-                  child: const MenuPage(),
+                  child: MenuPage(),
                   inheritTheme: true,
                   duration: const Duration(milliseconds: 500),
                   type: PageTransitionType.topToBottom,

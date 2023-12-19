@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class ButtonFront extends StatelessWidget {
   final String theText;
   final Function()? onTap;
+  final Color groundColor;
+  final Color textColor;
 
   const ButtonFront({
     super.key,
     required this.theText,
     required this.onTap,
+    required this.groundColor,
+    required this.textColor,
   });
 
   @override
@@ -19,7 +22,7 @@ class ButtonFront extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.symmetric(horizontal: 0),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: groundColor,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -27,11 +30,11 @@ class ButtonFront extends StatelessWidget {
           children: [
             Text(
               theText,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Color.fromARGB(255, 34, 37, 37),
+                color: textColor,
               ),
             ),
           ],

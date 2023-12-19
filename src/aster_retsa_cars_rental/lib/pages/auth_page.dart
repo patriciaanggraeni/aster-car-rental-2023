@@ -1,8 +1,8 @@
 import 'package:aster_retsa_cars_rental/pages/home_page.dart';
 import 'package:aster_retsa_cars_rental/pages/login_page.dart';
+import 'package:aster_retsa_cars_rental/pages/test_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import './menu_page.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});

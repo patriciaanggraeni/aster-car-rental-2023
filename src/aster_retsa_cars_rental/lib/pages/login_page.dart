@@ -1,25 +1,70 @@
+import 'package:aster_retsa_cars_rental/pages/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/auth_page_widget/button_front_widget.dart';
 import '../widgets/auth_page_widget/custom_field_widget.dart';
 import '../widgets/auth_page_widget/google_signup_widget.dart';
-import '../widgets/auth_page_widget/register_button_sal_widget.dart';
 import '../widgets/auth_page_widget/upper_logo_widget.dart';
-import 'home_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   // text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void signUserIn() async {
+  void signUserIn(BuildContext context) async {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    },
+  );
+  try {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text, 
+      email: emailController.text,
       password: passwordController.text,
     );
+    Navigator.pop(context);
+  } on FirebaseAuthException catch (e) {
+    Navigator.pop(context);
+    if (e.code == 'user-not-found') {
+      wrongEmailMessage(context);
+    } else if (e.code == 'wrong-password') {
+      wrongPassMessage(context);
+    }
   }
+}
+
+void wrongEmailMessage(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Incorrect Email'),
+      );
+    },
+  );
+}
+
+void wrongPassMessage(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Incorrect Password'),
+      );
+    },
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +122,10 @@ class LoginPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: ButtonFront(
-                  onTap: signUserIn,
+                  onTap: () => signUserIn(context),
                   theText: 'Login',
-                  //toPage: HomePage(),
+                  textColor: const Color.fromARGB(255, 34, 37, 37),
+                  groundColor: Colors.white,
                 ),
               ),
               const SizedBox(height: 5),
@@ -102,13 +148,24 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 10),
               Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
-                  child: const Column(
+                  child: Column(
                     children: [
-                      RegisterButton(),
-                      SizedBox(height: 30),
-                      GoogleSignUp(),
+                      ButtonFront(
+                        theText: 'Register', 
+                        onTap: (){
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => RegisterPage()),
+                          );
+                        },
+                        groundColor: const Color.fromARGB(255, 34, 37, 37), 
+                        textColor: Colors.white
+                      ),
+                      const SizedBox(height: 30),
+                      const GoogleSignUp(),
                     ],
-                  )),
+                  )
+              ),
             ],
           ),
         ),
