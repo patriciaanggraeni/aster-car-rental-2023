@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class GoogleSignUp extends StatelessWidget{
-  const GoogleSignUp({super.key});
+  final void Function()? onPressed;
+  const GoogleSignUp({
+    super.key,
+    this.onPressed
+  });
   @override
 
   Widget build(BuildContext context){
     return ElevatedButton(
-        onPressed:() => context,
+        onPressed:onPressed,
         style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
           (Set<MaterialState> states) {

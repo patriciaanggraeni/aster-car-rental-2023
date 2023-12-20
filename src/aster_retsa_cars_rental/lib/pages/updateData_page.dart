@@ -1,9 +1,12 @@
 import 'package:aster_retsa_cars_rental/pages/profile_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UpdateDataPage extends StatefulWidget {
   const UpdateDataPage({Key? key}) : super(key: key);
+
   @override
   _UpdateDataPageState createState() => _UpdateDataPageState();
 }
@@ -16,6 +19,35 @@ class _UpdateDataPageState extends State<UpdateDataPage> {
 
   bool isLoading = false;
 
+   @override
+  void initState() {
+    super.initState();
+    // Memanggil fungsi untuk mengambil dan menetapkan nilai awal pada controller
+    fetchDataAndFillControllers();
+  }
+  // Fungsi untuk menyimpan perubahan data pengguna
+  Future<void> fetchDataAndFillControllers() async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+
+    if (currentUser != null) {
+      // Mendapatkan data pengguna dari Firebase Firestore
+      DocumentSnapshot userSnapshot =
+          await FirebaseFirestore.instance.collection('user').doc(currentUser.uid).get();
+
+      // Membaca data dari snapshot dan mengisi controller
+      if (userSnapshot.exists) {
+        Map<String, dynamic> userData = userSnapshot.data() as Map<String, dynamic>;
+
+        nameController.text = userData['fullName'] ?? '';
+        sexController.text = userData['sex'] ?? '';
+        dobController.text = userData['birth'] ?? '';
+        addressController.text = userData['address'] ?? '';
+      } else {
+        print('Dokumen pengguna tidak ditemukan.');
+      }
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,17 +85,23 @@ class _UpdateDataPageState extends State<UpdateDataPage> {
             const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   // Set isLoading ke true saat tombol ditekan
                   setState(() {
                     isLoading = true;
                   });
 
+                  
+
+                  // Panggil fungsi untuk mengambil dan menetapkan nilai awal pada controller
+                  await fetchDataAndFillControllers();
+
                   // Simulasikan proses penyimpanan (Anda dapat menggantinya dengan logika penyimpanan yang sesungguhnya)
                   Future.delayed(const Duration(seconds: 2), () {
-                    Navigator.pushReplacement(context,
+                    Navigator.pushReplacement(
+                      context,
                       MaterialPageRoute(
-                        builder: (context) => const ProfilePage(),
+                        builder: (context) => ProfilePage(),
                       ),
                     );
                     setState(() {
@@ -74,6 +112,7 @@ class _UpdateDataPageState extends State<UpdateDataPage> {
                 child: const Text('Save Changes'),
               ),
             ),
+
 
             if (isLoading) // Tampilkan indikator loading dan pesan saat isLoading adalah true
             const Center(

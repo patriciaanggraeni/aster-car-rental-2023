@@ -11,7 +11,6 @@ import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});
-
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
@@ -19,7 +18,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? _user;
   void registerUser(BuildContext context) async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: emailController.text,
@@ -37,7 +37,23 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     }
   }
-
+  void _handleGoogleSignIn(){
+    try {
+      GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(googleAuthProvider);
+    } catch (error) {
+      print(error);
+    }
+  }
+  @override
+  void initState(){
+    super.initState();
+    _auth.authStateChanges().listen((event){
+      setState(() {
+        _user = event;
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,7 +149,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       textColor: Colors.white
                     ),
                     const SizedBox(height: 10),
-                    const GoogleSignUp(),
+                    GoogleSignUp(
+                      onPressed: _handleGoogleSignIn,
+                    ),
                   ],
                 )
               ),
