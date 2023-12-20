@@ -7,7 +7,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class VerificationProfilePage extends StatefulWidget {
-  const VerificationProfilePage({super.key});
+  const VerificationProfilePage({
+    super.key,
+    required this.carName,
+    required this.date,
+    required this.rentPrice,
+  });
+
+  final String carName, date;
+  final double rentPrice;
 
   @override
   State<VerificationProfilePage> createState() =>
@@ -129,7 +137,12 @@ class _VerificationProfilePageState extends State<VerificationProfilePage> {
                         context,
                         PageTransition(
                           ctx: context,
-                          child: ResultScanPage(picture: _imagePath!),
+                          child: ResultScanPage(
+                            picture: _imagePath!,
+                            carName: widget.carName,
+                            date: widget.date,
+                            rentPrice: widget.rentPrice,
+                          ),
                           inheritTheme: true,
                           duration: const Duration(milliseconds: 500),
                           type: PageTransitionType.fade,

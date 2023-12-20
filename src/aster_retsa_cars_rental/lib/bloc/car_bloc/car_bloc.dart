@@ -9,16 +9,18 @@ class CarBloc extends Bloc<CarEvent, CarState> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   CarBloc() : super(InitialCarState()) {
-    on<FetchCarsEvent>( (event, emit) async {
+    on<FetchCarsEvent>((event, emit) async {
       try {
-        QuerySnapshot querySnapshot = await _firebaseFirestore.collection('car').get();
-        List<Car> cars = querySnapshot.docs.map( (DocumentSnapshot documentSnapshot) =>
-          Car.fromMap(documentSnapshot.data() as Map<String, dynamic>)
-        ).toList();
+        QuerySnapshot querySnapshot =
+            await _firebaseFirestore.collection('car').get();
+        List<Car> cars = querySnapshot.docs
+            .map((DocumentSnapshot documentSnapshot) =>
+                Car.fromMap(documentSnapshot.data() as Map<String, dynamic>))
+            .toList();
         emit(LoadedCarState(cars));
       } catch (e) {
         emit(ErrorCarState(e.toString()));
       }
-    } );
+    });
   }
 }

@@ -1,4 +1,5 @@
 import 'package:aster_retsa_cars_rental/firebase_options.dart';
+import 'package:aster_retsa_cars_rental/pages/home_page.dart';
 import 'package:aster_retsa_cars_rental/pages/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

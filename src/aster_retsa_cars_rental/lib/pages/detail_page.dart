@@ -25,8 +25,9 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  String location = '';
-  String date = '';
+  String _location = '';
+  String _date = '';
+  double _price = 0;
 
   List<String> paymentMethods = ['Cash', 'Mastercard', 'Visa', 'Paypal'];
   String selectedPaymentMethod = 'Cash';
@@ -36,19 +37,24 @@ class _DetailPageState extends State<DetailPage> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _inputLocation(BuildContext context) async {
     final result = await Navigator.push(
       context,
       PageTransition(
         ctx: context,
-        child: InputLocationWidget(location: location),
+        child: InputLocationWidget(location: _location),
         inheritTheme: true,
         duration: const Duration(milliseconds: 500),
         type: PageTransitionType.fade,
       ),
     );
     setState(() {
-      location = result;
+      _location = result;
     });
   }
 
@@ -63,8 +69,10 @@ class _DetailPageState extends State<DetailPage> {
       lastDate: DateTime(DateTime.now().year + 1),
     );
     if (picked != null) {
+      int days = picked.end.difference(picked.start).inDays;
       setState(() {
-        date = '${_formatDate(picked.start)} to ${_formatDate(picked.end)}';
+        _date = '${_formatDate(picked.start)} to ${_formatDate(picked.end)}';
+        _price = widget.car.price * days;
       });
     }
   }
@@ -89,14 +97,15 @@ class _DetailPageState extends State<DetailPage> {
         child: ButtonBottomWidget(
           name: 'Rent',
           onPressed: () {
-            if (location.isNotEmpty && date.isNotEmpty) {
+            if (_location.isNotEmpty && _date.isNotEmpty) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ConfirmPage(
                     car: widget.car,
-                    date: date,
-                    location: location,
+                    date: _date,
+                    rentPrice: _price,
+                    location: _location,
                     paymentMethod: selectedPaymentMethod,
                   ),
                 ),
@@ -130,12 +139,12 @@ class _DetailPageState extends State<DetailPage> {
                 const SizedBox(height: 16),
                 PickupLocationWidget(
                   onPressed: () => _inputLocation(context),
-                  location: location,
+                  location: _location,
                 ),
                 const SizedBox(height: 16),
                 DatePickerWidget(
                   onPressed: _selectDateRange,
-                  date: date,
+                  date: _date,
                 ),
                 const SizedBox(height: 16),
                 PaymentMethodWidget(
