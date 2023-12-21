@@ -1,6 +1,4 @@
 import 'package:aster_retsa_cars_rental/pages/home_page.dart';
-import 'package:aster_retsa_cars_rental/pages/splash_screen.dart';
-import 'package:aster_retsa_cars_rental/pages/test_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/auth_page_widget/button_front_widget.dart';
@@ -32,28 +30,38 @@ class _RegisterPageState extends State<RegisterPage> {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => HomePage()),
-    );
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     }
   }
-  void _handleGoogleSignIn(){
+
+  void _handleGoogleSignIn() {
     try {
       GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
       _auth.signInWithProvider(googleAuthProvider);
     } catch (error) {
       print(error);
     }
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _auth.authStateChanges().listen((event){
+    _auth.authStateChanges().listen((event) {
       setState(() {
         _user = event;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,8 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     CustomField(
                         controller: passwordController,
                         hintText: 'Password',
-                        obsecure: true
-                    ),
+                        obsecure: true),
                   ],
                 ),
               ),
@@ -109,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: ButtonFront(
-                  onTap: () => registerUser(context), 
+                  onTap: () => registerUser(context),
                   theText: 'Register',
                   textColor: const Color.fromARGB(255, 34, 37, 37),
                   groundColor: Colors.white,
@@ -134,27 +141,26 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 10),
               Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  children: [
-                    ButtonFront(
-                      theText: 'Login', 
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                        );
-                      },
-                      groundColor: const Color.fromARGB(255, 34, 37, 37), 
-                      textColor: Colors.white
-                    ),
-                    const SizedBox(height: 10),
-                    GoogleSignUp(
-                      onPressed: _handleGoogleSignIn,
-                    ),
-                  ],
-                )
-              ),
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      ButtonFront(
+                          theText: 'Login',
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()),
+                            );
+                          },
+                          groundColor: const Color.fromARGB(255, 34, 37, 37),
+                          textColor: Colors.white),
+                      const SizedBox(height: 10),
+                      GoogleSignUp(
+                        onPressed: _handleGoogleSignIn,
+                      ),
+                    ],
+                  )),
             ],
           ),
         ),
