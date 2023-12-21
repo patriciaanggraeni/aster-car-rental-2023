@@ -39,18 +39,26 @@ class _RegisterPageState extends State<RegisterPage> {
         email: emailController.text,
       );
       Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
     }
   }
 
-  void _handleGoogleSignIn() {
+
+  void _handleGoogleSignIn()  {
     try {
       GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
       _auth.signInWithProvider(googleAuthProvider);
     } catch (error) {
       print(error);
+    }
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     }
   }
 
@@ -58,11 +66,13 @@ class _RegisterPageState extends State<RegisterPage> {
   void initState() {
     super.initState();
     _auth.authStateChanges().listen((event) {
+    _auth.authStateChanges().listen((event) {
       setState(() {
         _user = event;
       });
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: passwordController,
                         hintText: 'Password',
                         obsecure: true),
+                        obsecure: true),
                   ],
                 ),
               ),
@@ -118,6 +129,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: ButtonFront(
+                  onTap: () => registerUser(context),
                   onTap: () => registerUser(context),
                   theText: 'Register',
                   textColor: const Color.fromARGB(255, 34, 37, 37),
