@@ -1,8 +1,8 @@
 import 'package:aster_retsa_cars_rental/pages/home_page.dart';
-import 'package:aster_retsa_cars_rental/pages/splash_screen.dart';
-import 'package:aster_retsa_cars_rental/pages/test_auth.dart';
+import 'package:aster_retsa_cars_rental/repositories/repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import '../widgets/auth_page_widget/button_front_widget.dart';
 import '../widgets/auth_page_widget/custom_field_widget.dart';
 import '../widgets/auth_page_widget/google_signup_widget.dart';
@@ -11,6 +11,7 @@ import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});
+
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
@@ -20,6 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User? _user;
+
   void registerUser(BuildContext context) async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: emailController.text,
@@ -31,13 +33,19 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
+      Repository repository = Repository();
+      await repository.createUserProfile(
+        userId: user.uid,
+        email: emailController.text,
+      );
       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => HomePage()),
-    );
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     }
   }
-  void _handleGoogleSignIn(){
+
+  void _handleGoogleSignIn() {
     try {
       GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
       _auth.signInWithProvider(googleAuthProvider);
@@ -45,15 +53,17 @@ class _RegisterPageState extends State<RegisterPage> {
       print(error);
     }
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _auth.authStateChanges().listen((event){
+    _auth.authStateChanges().listen((event) {
       setState(() {
         _user = event;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,8 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     CustomField(
                         controller: passwordController,
                         hintText: 'Password',
-                        obsecure: true
-                    ),
+                        obsecure: true),
                   ],
                 ),
               ),
@@ -109,7 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: ButtonFront(
-                  onTap: () => registerUser(context), 
+                  onTap: () => registerUser(context),
                   theText: 'Register',
                   textColor: const Color.fromARGB(255, 34, 37, 37),
                   groundColor: Colors.white,
@@ -138,22 +147,22 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: [
                     ButtonFront(
-                      theText: 'Login', 
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                        );
-                      },
-                      groundColor: const Color.fromARGB(255, 34, 37, 37), 
-                      textColor: Colors.white
-                    ),
+                        theText: 'Login',
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
+                          );
+                        },
+                        groundColor: const Color.fromARGB(255, 34, 37, 37),
+                        textColor: Colors.white),
                     const SizedBox(height: 10),
                     GoogleSignUp(
                       onPressed: _handleGoogleSignIn,
                     ),
                   ],
-                )
+                ),
               ),
             ],
           ),

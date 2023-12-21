@@ -2,6 +2,7 @@ import 'package:aster_retsa_cars_rental/pages/home_page.dart';
 import 'package:aster_retsa_cars_rental/pages/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../widgets/auth_page_widget/button_front_widget.dart';
 import '../widgets/auth_page_widget/custom_field_widget.dart';
@@ -20,13 +21,13 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  User? _user;
+  User? user;
 
   void signUserIn(BuildContext context) async {
     showDialog(
       context: context,
       builder: (context) {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(color: Colors.white),
         );
       },
@@ -36,13 +37,11 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
-      User? user = FirebaseAuth.instance.currentUser;
-      if (user != null) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-      }
+      user = FirebaseAuth.instance.currentUser;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       if (e.code == 'user-not-found') {
@@ -57,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
+        return const AlertDialog(
           title: Text('Incorrect Email'),
         );
       },
@@ -68,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
+        return const AlertDialog(
           title: Text('Incorrect Password'),
         );
       },
@@ -87,10 +86,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    _auth.authStateChanges().listen((event) {
-      setState(() {
-        _user = event;
-      });
+    _auth.authStateChanges().listen((User? user) {
+      if (user != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      }
     });
   }
 

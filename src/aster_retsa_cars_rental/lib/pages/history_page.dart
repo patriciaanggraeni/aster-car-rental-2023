@@ -7,14 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HistoryPage extends StatefulWidget {
+class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
 
-  @override
-  State<HistoryPage> createState() => _HistoryPageState();
-}
-
-class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

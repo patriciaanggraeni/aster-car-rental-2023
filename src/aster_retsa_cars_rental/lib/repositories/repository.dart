@@ -33,4 +33,14 @@ class Repository {
       throw Exception('Error fetching car details: $e');
     }
   }
+
+  Future<void> createUserProfile({
+    required String userId,
+    required String email,
+  }) async {
+    await firestore.collection('user').doc(userId).set({
+      'id': userId,
+      'email': email,
+    });
+  }
 }

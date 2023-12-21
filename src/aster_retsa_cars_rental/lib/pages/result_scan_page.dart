@@ -4,6 +4,7 @@ import 'package:aster_retsa_cars_rental/constants/constants.dart';
 import 'package:aster_retsa_cars_rental/pages/home_page.dart';
 import 'package:aster_retsa_cars_rental/utils/auth_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -36,6 +37,20 @@ class _ResultScanPageState extends State<ResultScanPage> {
     _nikDetect = recognizeText();
   }
 
+  Future<String?> getCurrentUserNIK() async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .get();
+      if (userDoc.exists) {
+        return userDoc.get('nik');
+      }
+    }
+    return null;
+  }
+
   Future<String?> recognizeText() async {
     final inputImage = InputImage.fromFilePath(widget.picture);
     final TextRecognizer textDetector = TextRecognizer();
@@ -57,7 +72,9 @@ class _ResultScanPageState extends State<ResultScanPage> {
 
         if (regEx.hasMatch(text)) {
           nik = text;
-          if ('3502152602030003' == nik) {
+          String? currentUserNIK = await getCurrentUserNIK();
+
+          if (currentUserNIK == nik) {
             setState(() {
               _success = true;
             });
