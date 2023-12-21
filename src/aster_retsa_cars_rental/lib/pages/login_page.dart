@@ -1,7 +1,8 @@
+import 'package:aster_retsa_cars_rental/pages/home_page.dart';
 import 'package:aster_retsa_cars_rental/pages/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import '../widgets/auth_page_widget/button_front_widget.dart';
 import '../widgets/auth_page_widget/custom_field_widget.dart';
 import '../widgets/auth_page_widget/google_signup_widget.dart';
@@ -20,13 +21,13 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User? _user;
-  
+
   void signUserIn(BuildContext context) async {
     showDialog(
       context: context,
       builder: (context) {
         return Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: Colors.white),
         );
       },
     );
@@ -35,7 +36,13 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
-      Navigator.pop(context);
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      }
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       if (e.code == 'user-not-found') {
@@ -45,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
   }
+
   void wrongEmailMessage(BuildContext context) {
     showDialog(
       context: context,
@@ -55,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
+
   void wrongPassMessage(BuildContext context) {
     showDialog(
       context: context,
@@ -65,7 +74,8 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
-  void _handleGoogleSignIn(){
+
+  void _handleGoogleSignIn() {
     try {
       GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
       _auth.signInWithProvider(googleAuthProvider);
@@ -73,15 +83,17 @@ class _LoginPageState extends State<LoginPage> {
       print(error);
     }
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _auth.authStateChanges().listen((event){
+    _auth.authStateChanges().listen((event) {
       setState(() {
         _user = event;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,8 +139,8 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 10),
                     CustomField(
                       controller: passwordController,
-                      hintText: 'Password', 
-                      obsecure: true
+                      hintText: 'Password',
+                      obsecure: true,
                     ),
                   ],
                 ),
@@ -163,26 +175,26 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 10),
               Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    children: [
-                      ButtonFront(
-                        theText: 'Register', 
-                        onTap: (){
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                child: Column(
+                  children: [
+                    ButtonFront(
+                        theText: 'Register',
+                        onTap: () {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => RegisterPage()),
+                            MaterialPageRoute(
+                                builder: (context) => RegisterPage()),
                           );
                         },
-                        groundColor: const Color.fromARGB(255, 34, 37, 37), 
-                        textColor: Colors.white
-                      ),
-                      const SizedBox(height: 30),
-                      GoogleSignUp(
-                        onPressed: _handleGoogleSignIn,
-                      ),
-                    ],
-                  )
+                        groundColor: const Color.fromARGB(255, 34, 37, 37),
+                        textColor: Colors.white),
+                    const SizedBox(height: 30),
+                    GoogleSignUp(
+                      onPressed: _handleGoogleSignIn,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

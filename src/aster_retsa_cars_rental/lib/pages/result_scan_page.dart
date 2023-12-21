@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:aster_retsa_cars_rental/constants/constants.dart';
 import 'package:aster_retsa_cars_rental/pages/home_page.dart';
+import 'package:aster_retsa_cars_rental/utils/auth_utils.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -11,16 +13,21 @@ class ResultScanPage extends StatefulWidget {
   const ResultScanPage({
     super.key,
     required this.picture,
+    required this.carName,
+    required this.date,
+    required this.rentPrice,
   });
 
   final String picture;
+  final String carName, date;
+  final double rentPrice;
 
   @override
   State<ResultScanPage> createState() => _ResultScanPageState();
 }
 
 class _ResultScanPageState extends State<ResultScanPage> {
-  bool _success = false;
+  bool _success = true;
   late Future<String?> _nikDetect;
 
   @override
@@ -50,18 +57,32 @@ class _ResultScanPageState extends State<ResultScanPage> {
 
         if (regEx.hasMatch(text)) {
           nik = text;
-
           if ('3502152602030003' == nik) {
             setState(() {
               _success = true;
             });
           }
-
           return nik;
         }
       }
     }
     return null;
+  }
+
+  Future<DocumentReference> addHistoryEntry({
+    required String carName,
+    required String date,
+    required double price,
+  }) async {
+    CollectionReference history =
+        FirebaseFirestore.instance.collection('history');
+
+    return history.add({
+      'carName': carName,
+      'date': date,
+      'price': price,
+      'userId': AuthUtils.getCurrentUserId(),
+    });
   }
 
   @override
@@ -138,6 +159,11 @@ class _ResultScanPageState extends State<ResultScanPage> {
                     ),
                     onPressed: () {
                       if (_success) {
+                        addHistoryEntry(
+                          carName: widget.carName,
+                          date: widget.date,
+                          price: widget.rentPrice,
+                        );
                         Navigator.push(
                           context,
                           PageTransition(

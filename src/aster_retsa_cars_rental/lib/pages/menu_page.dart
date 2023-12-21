@@ -12,21 +12,22 @@ import 'login_page.dart';
 class MenuPage extends StatelessWidget {
   MenuPage({super.key});
   User user = FirebaseAuth.instance.currentUser!;
-  void signUserOut(BuildContext context) async{
-    if (user != null){
+  void signUserOut(BuildContext context) async {
+    if (user != null) {
       await FirebaseAuth.instance.signOut();
       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()),
+      );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-         'My Profile',
+          'My Profile',
           style: GoogleFonts.poppins(
             color: Colors.white,
           ),
@@ -40,7 +41,7 @@ class MenuPage extends StatelessWidget {
                 size: 25,
               ),
               onPressed: () {
-                 Navigator.push(
+                Navigator.push(
                   context,
                   PageTransition(
                     ctx: context,
@@ -194,12 +195,12 @@ class ItemMenuWidget extends StatelessWidget {
 }
 
 class LogoutButton extends StatelessWidget {
-  const LogoutButton(
-      {super.key,
-      required this.name,
-      required this.icon,
-      required this.onTap,
-      });
+  const LogoutButton({
+    super.key,
+    required this.name,
+    required this.icon,
+    required this.onTap,
+  });
 
   final String name;
   final IconData icon;

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Car {
   final bool available;
   final String name, type, description, transmissionType, color, imageCover;
@@ -29,7 +31,8 @@ class Car {
       name: data['name'] ?? "Gagal mengambil nama",
       type: data['type'] ?? "Gagal mengambil type",
       description: data['description'] ?? "Gagal mengambil deskripsi",
-      transmissionType: data['transmissionType'] ?? "Gagal mengambil transmissionType",
+      transmissionType:
+          data['transmissionType'] ?? "Gagal mengambil transmissionType",
       color: data['color'] ?? "Gagal mengambil color",
       imageCover: data['imageCover'] ?? "Gagal mengambil imageCover",
       price: data['price'].toDouble() ?? 0,

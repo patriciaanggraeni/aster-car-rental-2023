@@ -6,69 +6,55 @@ import 'package:page_transition/page_transition.dart';
 import '../models/car.dart';
 import '../widgets/detail_page_widget/button_bottom_widget.dart';
 import '../widgets/detail_page_widget/mini_detail_car_widget.dart';
-import 'credit_card_page.dart';
 
 class ConfirmPage extends StatelessWidget {
   const ConfirmPage({
     super.key,
     required this.car,
     required this.date,
+    required this.rentPrice,
     required this.location,
     required this.paymentMethod,
   });
 
   final Car car;
   final String date, location, paymentMethod;
+  final double rentPrice;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ButtonBottomWidget(
-              name: 'Scan ID Card',
-              icon: Icons.qr_code_scanner,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    ctx: context,
-                    child: const VerificationProfilePage(),
-                    inheritTheme: true,
-                    duration: const Duration(milliseconds: 500),
-                    type: PageTransitionType.fade,
-                  ),
-                );
-              },
-            ),
-            ButtonBottomWidget(
-              name: 'Confirm',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    ctx: context,
-                    child: const HomePage(),
-                    inheritTheme: true,
-                    duration: const Duration(milliseconds: 500),
-                    type: PageTransitionType.fade,
-                  ),
-                );
-              },
-            )
-          ],
+        child: ButtonBottomWidget(
+          name: 'Scan ID Card',
+          icon: Icons.qr_code_scanner,
+          onPressed: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                ctx: context,
+                child: VerificationProfilePage(
+                  carName: car.name,
+                  date: date,
+                  rentPrice: rentPrice,
+                ),
+                inheritTheme: true,
+                duration: const Duration(milliseconds: 500),
+                type: PageTransitionType.fade,
+              ),
+            );
+          },
         ),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(car.imageCover),
+              Image.network(car.imageCover, width: 300),
               const SizedBox(height: 12),
               const Text(
                 'We need to complete the process, please scan your ID Card.',
@@ -87,11 +73,16 @@ class ConfirmPage extends StatelessWidget {
                   children: [
                     const TextSpan(text: 'You will rent a '),
                     TextSpan(
-                        text: '${car.name} ${car.type}',
-                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                      text: '${car.name} ${car.type}',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const TextSpan(text: ' with a rental price '),
                     TextSpan(
-                        text:
-                            ' with a $paymentMethod from $date at $location.'),
+                      text: '\$$rentPrice',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                        text: ' use $paymentMethod from $date at $location.'),
                   ],
                 ),
               ),
