@@ -28,7 +28,7 @@ class ResultScanPage extends StatefulWidget {
 }
 
 class _ResultScanPageState extends State<ResultScanPage> {
-  bool _success = true;
+  bool _success = false;
   late Future<String?> _nikDetect;
 
   @override
